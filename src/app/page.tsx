@@ -9,7 +9,6 @@ import { Mission } from "@/components/sections/Mission";
 import { Newsletter } from "@/components/sections/Newsletter";
 import { Partners } from "@/components/sections/Partners";
 import { Portfolio } from "@/components/sections/Portfolio";
-import { Pricing } from "@/components/sections/Pricing";
 import { Services } from "@/components/sections/Services";
 import { Stats } from "@/components/sections/Stats";
 import { Team } from "@/components/sections/Team";
@@ -27,7 +26,6 @@ export default function Home() {
         <Mission />
         <Stats />
         <Beliefs />
-        <Pricing />
         <Testimonials />
         <Faq />
         <BlogTeaser />
