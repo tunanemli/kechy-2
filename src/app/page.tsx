@@ -11,7 +11,6 @@ import { Partners } from "@/components/sections/Partners";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Services } from "@/components/sections/Services";
 import { Stats } from "@/components/sections/Stats";
-import { Team } from "@/components/sections/Team";
 import { Testimonials } from "@/components/sections/Testimonials";
 
 export default function Home() {
@@ -29,7 +28,6 @@ export default function Home() {
         <Testimonials />
         <Faq />
         <BlogTeaser />
-        <Team />
         <Partners />
         <Newsletter />
       </main>
