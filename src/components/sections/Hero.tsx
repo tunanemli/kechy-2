@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Hero() {
@@ -7,6 +8,21 @@ export function Hero() {
       className="relative min-h-[100svh] overflow-hidden bg-black pt-[72px] text-white"
     >
       <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0">
+          <Image
+            src="/hero-cyberpunk-david.png"
+            alt=""
+            fill
+            priority
+            className="object-cover object-[78%_32%] opacity-[0.32] contrast-[1.05] saturate-[1.15] md:opacity-40 md:object-[70%_28%] lg:object-[62%_22%]"
+            sizes="100vw"
+          />
+        </div>
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-black via-black/92 to-black/35 md:via-black/88 md:to-black/20"
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30 md:from-black/40" aria-hidden />
         <div className="absolute -left-32 top-1/4 h-[420px] w-[420px] rounded-full bg-[var(--color-lime)]/10 blur-[120px]" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
         <svg

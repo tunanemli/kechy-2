@@ -36,10 +36,6 @@ export function Footer() {
               <a href="mailto:hello@kechy.studio" className="hover:text-white">
                 hello@kechy.studio
               </a>
-              <br />
-              <a href="tel:+902125550123" className="hover:text-white">
-                +90 (212) 555 01 23
-              </a>
             </p>
             <Link
               href="/contact"

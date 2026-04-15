@@ -27,7 +27,7 @@ export function Beliefs() {
           <ul className="mt-8 space-y-3 text-sm font-semibold">
             <li>+ Uzmanlaşmış yetkinlikler</li>
             <li>+ Müşteri odaklı yaklaşım</li>
-            <li>+ Ödüllü iş çıkışı</li>
+            <li>+ Stratejiden üretime tek ekip</li>
           </ul>
           <Link
             href="/contact"

@@ -7,7 +7,7 @@ import { Header } from "@/components/sections/Header";
 export const metadata: Metadata = {
   title: "İletişim — Kechy",
   description:
-    "Kechy ile projenizi konuşun. İstanbul ve uzaktan dünya genelinde hizmet. E-posta, telefon veya form üzerinden ulaşın.",
+    "Kechy ile projenizi konuşun. İstanbul ve uzaktan dünya genelinde hizmet. E-posta veya form üzerinden ulaşın.",
 };
 
 export default function ContactPage() {
@@ -32,8 +32,7 @@ export default function ContactPage() {
             <div className="text-black">
               <h2 className="font-display text-2xl font-bold md:text-3xl">Bize ulaşın</h2>
               <p className="mt-4 max-w-md text-zinc-600">
-                Ofis ve uzaktan çalışma modeliyle esnek iletişim kuruyoruz. Öncelikli kanal e-postadır; acil durumlarda
-                telefonla da ulaşabilirsiniz.
+                Ofis ve uzaktan çalışma modeliyle esnek iletişim kuruyoruz. Öncelikli kanal e-postadır.
               </p>
               <ul className="mt-10 space-y-6 text-sm md:text-base">
                 <li>
@@ -44,12 +43,6 @@ export default function ContactPage() {
                   <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">E-posta</p>
                   <a href="mailto:hello@kechy.studio" className="mt-1 inline-block font-medium hover:text-zinc-600">
                     hello@kechy.studio
-                  </a>
-                </li>
-                <li>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Telefon</p>
-                  <a href="tel:+902125550123" className="mt-1 inline-block font-medium hover:text-zinc-600">
-                    +90 (212) 555 01 23
                   </a>
                 </li>
               </ul>
