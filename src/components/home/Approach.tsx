@@ -1,37 +1,29 @@
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-
-const steps = [
-  { number: "01", title: "Discover", body: "Understand the business, audience, and problem." },
-  { number: "02", title: "Strategize", body: "Define the creative direction, technical scope, and success criteria." },
-  { number: "03", title: "Build", body: "Design, develop, produce, and implement." },
-  { number: "04", title: "Improve", body: "Measure performance, learn, and optimize." },
-];
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/routing";
 
 type ApproachProps = {
-  eyebrow?: string;
-  title?: string;
+  locale: Locale;
+  /** The service-page variant of the heading. */
+  variant?: "default" | "service";
 };
 
-export function Approach({
-  eyebrow = "Our approach",
-  title = "A clear process, from first conversation to results.",
-}: ApproachProps) {
+export function Approach({ locale, variant = "default" }: ApproachProps) {
+  const { approach } = getDictionary(locale);
+  const eyebrow = variant === "service" ? approach.serviceEyebrow : approach.eyebrow;
+  const title = variant === "service" ? approach.serviceTitle : approach.title;
+
   return (
     <section id="approach" aria-labelledby="approach-title" className="scroll-mt-18 border-t border-line py-24 lg:py-36">
       <Container>
-        <SectionHeading
-          id="approach-title"
-          eyebrow={eyebrow}
-          title={title}
-          className="reveal"
-        />
+        <SectionHeading id="approach-title" eyebrow={eyebrow} title={title} className="reveal" />
 
         <ol className="mt-16 grid gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
-          {steps.map((step) => (
-            <li key={step.number} className="reveal group flex min-h-64 flex-col bg-background p-8 lg:min-h-80">
+          {approach.steps.map((step, index) => (
+            <li key={step.title} className="reveal group flex min-h-64 flex-col bg-background p-8 lg:min-h-80">
               <span className="font-display text-5xl font-semibold tracking-tight text-subtle transition-colors duration-500 group-hover:text-brand lg:text-6xl">
-                {step.number}
+                0{index + 1}
               </span>
               <h3 className="mt-auto pt-12 font-display text-2xl font-semibold tracking-tight text-foreground">
                 {step.title}

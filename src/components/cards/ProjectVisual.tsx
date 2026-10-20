@@ -4,26 +4,31 @@ import type { ProjectVisualVariant } from "@/data/projects";
  * Illustrative visuals for conceptual projects, built from the brand's shapes
  * (dot, rounded stem, curve). Replace with real imagery via `project.image`.
  */
-export function ProjectVisual({ variant, label }: { variant: ProjectVisualVariant; label: string }) {
+type ProjectVisualProps = {
+  variant: ProjectVisualVariant;
+  label: string;
+  /** Headline inside the campaign key visual. */
+  text?: string;
+};
+
+export function ProjectVisual({ variant, label, text }: ProjectVisualProps) {
   return (
     <div role="img" aria-label={label} className="absolute inset-0">
-      {variant === "campaign" ? <CampaignVisual /> : null}
+      {variant === "campaign" ? <CampaignVisual text={text} /> : null}
       {variant === "commerce" ? <CommerceVisual /> : null}
       {variant === "platform" ? <PlatformVisual /> : null}
     </div>
   );
 }
 
-function CampaignVisual() {
+function CampaignVisual({ text }: { text?: string }) {
   return (
     <div className="absolute inset-0 bg-brand">
       {/* Key visual */}
       <div className="absolute top-[12%] bottom-[12%] left-[7%] w-[40%] overflow-hidden rounded-[4px] bg-background">
         <div className="absolute -right-[22%] -bottom-[14%] aspect-square w-[95%] rounded-full bg-brand" />
-        <div className="absolute top-[10%] left-[10%] font-display text-[clamp(1.4rem,3.6vw,3rem)] leading-[0.9] font-semibold tracking-tight text-foreground">
-          New
-          <br />
-          season.
+        <div className="absolute top-[10%] left-[10%] font-display text-[clamp(1.4rem,3.6vw,3rem)] leading-[0.9] font-semibold tracking-tight text-foreground [word-spacing:100vw]">
+          {text}
         </div>
         <div className="absolute bottom-[9%] left-[10%] h-1 w-[22%] rounded-full bg-foreground/80" />
       </div>

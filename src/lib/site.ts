@@ -4,12 +4,8 @@ function resolveSiteUrl() {
   return "http://localhost:3000";
 }
 
+/** Locale-independent site settings. Localized copy lives in i18n/dictionaries.ts. */
 export const site = {
   name: "Kechy Creative",
-  shortName: "Kechy",
-  tagline: "Creative × Technology Studio",
-  description:
-    "Kechy Creative is a creative and technology studio. We bring social media marketing and software development together to build brands that stand out and businesses that move forward.",
   url: resolveSiteUrl(),
-  locale: "en_US",
 } as const;

@@ -1,10 +1,15 @@
 import Link from "next/link";
 import { ArrowIcon } from "@/components/ui/Button";
 import type { ServicePillar } from "@/data/service-pillars";
-import { isLive } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
-export function ServiceCard({ pillar, className }: { pillar: ServicePillar; className?: string }) {
+type ServiceCardProps = {
+  pillar: ServicePillar;
+  exploreLabel: string;
+  className?: string;
+};
+
+export function ServiceCard({ pillar, exploreLabel, className }: ServiceCardProps) {
   const headingId = `service-${pillar.id}`;
 
   return (
@@ -28,16 +33,13 @@ export function ServiceCard({ pillar, className }: { pillar: ServicePillar; clas
         ))}
       </ul>
 
-      {/* Linked once the dedicated service page is published (see lib/routes.ts). */}
-      {isLive(pillar.href) ? (
-        <Link
-          href={pillar.href}
-          className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
-        >
-          Explore {pillar.title}
-          <ArrowIcon className="size-4" />
-        </Link>
-      ) : null}
+      <Link
+        href={pillar.href}
+        className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
+      >
+        {exploreLabel}
+        <ArrowIcon className="size-4" />
+      </Link>
     </article>
   );
 }

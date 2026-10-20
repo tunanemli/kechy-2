@@ -1,30 +1,35 @@
 import { ServiceCard } from "@/components/cards/ServiceCard";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { servicePillars } from "@/data/service-pillars";
+import { getServicePillars } from "@/data/service-pillars";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/routing";
 
-export function ServicesPreview() {
+export function ServicesPreview({ locale }: { locale: Locale }) {
+  const { servicesPreview } = getDictionary(locale);
+
   return (
     <section id="services" aria-labelledby="services-title" className="scroll-mt-18 py-24 lg:py-36">
       <Container>
         <SectionHeading
           id="services-title"
-          eyebrow="What we do"
+          eyebrow={servicesPreview.eyebrow}
           title={
             <>
-              Ideas that get noticed.
-              <br className="hidden sm:block" /> Technology that works.
+              {servicesPreview.titleA}
+              <br className="hidden sm:block" /> {servicesPreview.titleB}
             </>
           }
-          description="Social media marketing and software development under one roof, so strategy, content and code move in the same direction."
+          description={servicesPreview.description}
           className="reveal"
         />
 
         <div className="mt-16 grid border-t border-line lg:mt-24 lg:grid-cols-3">
-          {servicePillars.map((pillar) => (
+          {getServicePillars(locale).map((pillar) => (
             <ServiceCard
               key={pillar.id}
               pillar={pillar}
+              exploreLabel={servicesPreview.explore(pillar.title)}
               className="reveal border-b border-line lg:border-b-0 lg:not-last:border-r lg:first:pl-0 lg:last:pr-0"
             />
           ))}

@@ -1,41 +1,46 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Logo } from "@/components/layout/Logo";
-import { mainNav, type NavItem } from "@/components/layout/navigation";
-import { servicePillars } from "@/data/service-pillars";
-import { resolveHref, routes } from "@/lib/routes";
+import { getMainNav } from "@/components/layout/navigation";
+import { getServicePillars } from "@/data/service-pillars";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/routing";
+import { href, liveHref, routes } from "@/lib/routes";
 import { site } from "@/lib/site";
 
 type FooterLink = { label: string; href: string | null };
 
-const columns: { title: string; links: FooterLink[] }[] = [
-  {
-    title: "Studio",
-    links: [...mainNav, { label: "Contact", href: routes.contact } satisfies NavItem],
-  },
-  {
-    title: "Services",
-    links: servicePillars.map((pillar) => ({ label: pillar.title, href: resolveHref(pillar.href) })),
-  },
-];
+export function Footer({ locale }: { locale: Locale }) {
+  const { common, footer } = getDictionary(locale);
 
-const legal: FooterLink[] = [
-  { label: "Privacy policy", href: resolveHref(routes.privacyPolicy) },
-  { label: "Cookie policy", href: resolveHref(routes.cookiePolicy) },
-];
+  const columns: { title: string; links: FooterLink[] }[] = [
+    {
+      title: footer.studio,
+      links: [...getMainNav(locale), { label: common.contact, href: liveHref(locale, routes.contact) }],
+    },
+    {
+      title: footer.services,
+      links: getServicePillars(locale).map((pillar) => ({ label: pillar.title, href: pillar.href })),
+    },
+  ];
 
-export function Footer() {
+  const legal: FooterLink[] = [
+    { label: footer.privacy, href: href(locale, routes.privacyPolicy) },
+    { label: footer.cookies, href: href(locale, routes.cookiePolicy) },
+  ];
+
   return (
     <footer className="border-t border-line">
       <Container className="grid gap-14 pt-20 pb-12 md:grid-cols-12 md:gap-8 lg:pt-24">
         <div className="md:col-span-6">
-          <Link href={routes.home} className="-m-2 inline-block rounded-md p-2" aria-label="Kechy Creative — home">
+          <Link
+            href={liveHref(locale, routes.home)}
+            className="-m-2 inline-block rounded-md p-2"
+            aria-label={common.homeLabel}
+          >
             <Logo width={150} alt="" />
           </Link>
-          <p className="mt-8 max-w-sm text-base leading-relaxed text-muted">
-            A creative and technology studio. We combine social media marketing and software development to help
-            brands stand out and businesses move forward.
-          </p>
+          <p className="mt-8 max-w-sm text-base leading-relaxed text-muted">{footer.statement}</p>
         </div>
 
         {columns.map((column) => (
@@ -44,7 +49,7 @@ export function Footer() {
             <ul className="mt-6 space-y-3">
               {column.links.map((link) => (
                 <li key={link.label}>
-                  <FooterLinkItem link={link} />
+                  <FooterLinkItem link={link} comingSoon={common.comingSoon} />
                 </li>
               ))}
             </ul>
@@ -54,12 +59,12 @@ export function Footer() {
 
       <Container className="flex flex-col gap-4 border-t border-line py-8 text-sm text-subtle sm:flex-row sm:items-center sm:justify-between">
         <p>
-          © {new Date().getFullYear()} {site.name}. All rights reserved.
+          © {new Date().getFullYear()} {site.name}. {footer.rights}
         </p>
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           {legal.map((link) => (
             <li key={link.label}>
-              <FooterLinkItem link={link} />
+              <FooterLinkItem link={link} comingSoon={common.comingSoon} />
             </li>
           ))}
         </ul>
@@ -69,11 +74,11 @@ export function Footer() {
 }
 
 /** Renders a link, or a muted "coming soon" label for pages that are not published yet. */
-function FooterLinkItem({ link }: { link: FooterLink }) {
+function FooterLinkItem({ link, comingSoon }: { link: FooterLink; comingSoon: string }) {
   if (!link.href) {
     return (
       <span className="text-subtle">
-        {link.label} <span className="text-xs">(coming soon)</span>
+        {link.label} <span className="text-xs">({comingSoon})</span>
       </span>
     );
   }

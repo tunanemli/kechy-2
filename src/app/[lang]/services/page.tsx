@@ -6,46 +6,36 @@ import { Container } from "@/components/layout/Container";
 import { ArrowIcon } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { servicePillars } from "@/data/service-pillars";
+import { getServicePillars } from "@/data/service-pillars";
+import { getDictionary } from "@/i18n/dictionaries";
+import { resolveLocale, type LangParams } from "@/i18n/server";
+import { pageMetadata } from "@/lib/metadata";
+import { routes } from "@/lib/routes";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Social media and creative, web development and technology, and growth and performance marketing from one focused team.",
-  alternates: { canonical: "/services" },
-};
+export async function generateMetadata({ params }: LangParams): Promise<Metadata> {
+  const locale = await resolveLocale(params);
+  const { servicesPage } = getDictionary(locale);
+  return pageMetadata(locale, routes.services, {
+    title: servicesPage.metaTitle,
+    description: servicesPage.metaDescription,
+  });
+}
 
-const reasons = [
-  {
-    title: "One brief, one team",
-    body: "Campaigns, websites and tracking are planned together, so nothing gets lost between agencies.",
-  },
-  {
-    title: "Direct communication",
-    body: "You talk to the people doing the work. No account layers, no messages passed along.",
-  },
-  {
-    title: "Built to be measured",
-    body: "Every project starts with clear success criteria and the tracking to see whether we're meeting them.",
-  },
-];
+export default async function ServicesPage({ params }: LangParams) {
+  const locale = await resolveLocale(params);
+  const { servicesPage, servicesPreview } = getDictionary(locale);
 
-export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Services"
-        title="Creative ideas, solid engineering."
-        lead="Social media marketing and software development under one roof. Choose one discipline or combine them. Either way, strategy, content and code move in the same direction."
-      />
+      <PageHero eyebrow={servicesPage.eyebrow} title={servicesPage.title} lead={servicesPage.lead} />
 
       <section aria-labelledby="pillars-title">
         <h2 id="pillars-title" className="sr-only">
-          Our services
+          {servicesPage.listHeading}
         </h2>
         <Container>
           <ul>
-            {servicePillars.map((pillar) => (
+            {getServicePillars(locale).map((pillar) => (
               <li
                 key={pillar.id}
                 className="reveal group relative grid gap-8 border-b border-line py-14 lg:grid-cols-12 lg:gap-10 lg:py-20"
@@ -78,7 +68,7 @@ export default function ServicesPage() {
                     aria-hidden="true"
                     className="inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors group-hover:text-brand"
                   >
-                    Explore {pillar.title}
+                    {servicesPreview.explore(pillar.title)}
                     <ArrowIcon className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </p>
                 </div>
@@ -90,9 +80,14 @@ export default function ServicesPage() {
 
       <section aria-labelledby="why-title" className="py-24 lg:py-36">
         <Container>
-          <SectionHeading id="why-title" eyebrow="Why one team" title="Two disciplines that work better together." className="reveal" />
+          <SectionHeading
+            id="why-title"
+            eyebrow={servicesPage.whyEyebrow}
+            title={servicesPage.whyTitle}
+            className="reveal"
+          />
           <ul className="mt-14 grid gap-12 border-t border-line pt-12 md:grid-cols-3 md:gap-10 lg:mt-20">
-            {reasons.map((reason) => (
+            {servicesPage.reasons.map((reason) => (
               <li key={reason.title} className="reveal">
                 <h3 className="font-display text-h3 font-semibold text-foreground">{reason.title}</h3>
                 <p className="mt-4 max-w-sm text-base leading-relaxed text-muted">{reason.body}</p>
@@ -102,8 +97,8 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <Approach />
-      <FinalCta />
+      <Approach locale={locale} />
+      <FinalCta locale={locale} />
     </>
   );
 }

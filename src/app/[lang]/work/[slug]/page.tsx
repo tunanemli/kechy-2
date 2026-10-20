@@ -7,35 +7,48 @@ import { FinalCta } from "@/components/home/FinalCta";
 import { Container } from "@/components/layout/Container";
 import { ArrowIcon } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
-import { getProject, projects } from "@/data/projects";
+import { getProject, getProjects } from "@/data/projects";
 import { getServicePillar } from "@/data/service-pillars";
-import { caseStudyPath, routes } from "@/lib/routes";
+import { getDictionary } from "@/i18n/dictionaries";
+import { caseStudySlugs } from "@/i18n/routing";
+import { resolveLocale } from "@/i18n/server";
+import { caseStudyMetadata } from "@/lib/metadata";
+import { isCaseStudySlug, liveHref, routes } from "@/lib/routes";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ lang: string; slug: string }> };
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return Object.keys(caseStudySlugs).map((slug) => ({ slug }));
+}
+
+async function resolveProject(params: Props["params"]) {
+  const locale = await resolveLocale(params);
+  const { slug } = await params;
+  const project = getProject(locale, slug);
+  if (!project || !isCaseStudySlug(slug)) notFound();
+  return { locale, project, slug };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = getProject((await params).slug);
-  if (!project) return {};
-  return {
-    title: project.kind === "concept" ? `${project.title} (concept)` : project.title,
+  const { locale, project, slug } = await resolveProject(params);
+  const { caseStudy } = getDictionary(locale);
+  return caseStudyMetadata(locale, slug, {
+    title: project.kind === "concept" ? `${project.title} ${caseStudy.conceptSuffix}` : project.title,
     description: project.summary,
-    alternates: { canonical: caseStudyPath(project.slug) },
-  };
+  });
 }
 
 export default async function CaseStudyPage({ params }: Props) {
-  const project = getProject((await params).slug);
-  if (!project) notFound();
+  const { locale, project } = await resolveProject(params);
+  const { caseStudy, common } = getDictionary(locale);
 
-  const index = projects.indexOf(project);
-  const next = projects[(index + 1) % projects.length];
-  const services = project.services.map(getServicePillar).filter((pillar) => pillar !== undefined);
+  const projects = getProjects(locale);
+  const next = projects[(projects.findIndex((candidate) => candidate.slug === project.slug) + 1) % projects.length];
+  const services = project.services
+    .map((id) => getServicePillar(locale, id))
+    .filter((pillar) => pillar !== undefined);
 
   return (
     <>
@@ -43,15 +56,14 @@ export default async function CaseStudyPage({ params }: Props) {
         eyebrow={project.category}
         title={project.title}
         lead={project.summary}
-        back={{ label: "All work", href: routes.work }}
+        back={{ label: common.allWork, href: liveHref(locale, routes.work) }}
       >
         {project.kind === "concept" ? (
           <p className="inline-flex max-w-2xl items-start gap-3 rounded-[6px] border border-brand/40 px-4 py-3 text-sm leading-relaxed text-muted">
             <span className="mt-0.5 shrink-0 rounded-full border border-brand/60 px-2 py-0.5 text-[0.6875rem] font-medium tracking-[0.16em] text-brand uppercase">
-              Concept
+              {common.concept}
             </span>
-            This is a self-initiated concept that shows how we would approach a brief like this. It is not client
-            work.
+            {caseStudy.conceptNote}
           </p>
         ) : null}
       </PageHero>
@@ -59,18 +71,25 @@ export default async function CaseStudyPage({ params }: Props) {
       <Container className="pt-12 lg:pt-16">
         <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border border-line bg-surface md:aspect-[21/9]">
           {project.image ? (
-            <Image src={project.image.src} alt={project.image.alt} fill preload sizes="(min-width: 1320px) 1224px, 100vw" className="object-cover" />
+            <Image
+              src={project.image.src}
+              alt={project.image.alt}
+              fill
+              preload
+              sizes="(min-width: 1320px) 1224px, 100vw"
+              className="object-cover"
+            />
           ) : (
-            <ProjectVisual variant={project.visual.variant} label={project.visual.label} />
+            <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
           )}
         </div>
       </Container>
 
-      <CaseSection id="brief" label="The brief">
+      <CaseSection id="brief" label={caseStudy.brief}>
         <p className="text-lead text-foreground/90">{project.brief}</p>
       </CaseSection>
 
-      <CaseSection id="approach" label="Our approach">
+      <CaseSection id="approach" label={caseStudy.approach}>
         <ol className="grid gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-2">
           {project.approach.map((step, stepIndex) => (
             <li key={step.title} className="reveal bg-background p-7 lg:p-8">
@@ -82,18 +101,18 @@ export default async function CaseStudyPage({ params }: Props) {
         </ol>
       </CaseSection>
 
-      <CaseSection id="deliverables" label="Deliverables">
+      <CaseSection id="deliverables" label={caseStudy.deliverables}>
         <div className="grid gap-12 sm:grid-cols-2">
           <ul className="border-t border-line">
             {project.deliverables.map((item) => (
               <li key={item} className="flex items-center gap-3 border-b border-line py-4 text-foreground/90">
-                <span className="h-px w-3 bg-brand" aria-hidden="true" />
+                <span className="h-px w-3 shrink-0 bg-brand" aria-hidden="true" />
                 {item}
               </li>
             ))}
           </ul>
           <div>
-            <h3 className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">Services involved</h3>
+            <h3 className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">{caseStudy.servicesInvolved}</h3>
             <ul className="mt-5 space-y-3">
               {services.map((pillar) => (
                 <li key={pillar.id}>
@@ -111,11 +130,11 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
       </CaseSection>
 
-      {next !== project ? (
-        <nav aria-label="Next project" className="border-t border-line">
+      {next.slug !== project.slug ? (
+        <nav aria-label={caseStudy.nextProject} className="border-t border-line">
           <Container>
-            <Link href={caseStudyPath(next.slug)} className="group flex flex-col gap-3 py-16 lg:py-24">
-              <span className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">Next project</span>
+            <Link href={next.href} className="group flex flex-col gap-3 py-16 lg:py-24">
+              <span className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">{caseStudy.nextProject}</span>
               <span className="flex items-center justify-between gap-6 font-display text-h2 font-semibold text-foreground transition-colors group-hover:text-brand">
                 {next.title}
                 <ArrowIcon className="size-8 shrink-0 transition-transform duration-300 group-hover:translate-x-1 lg:size-12" />
@@ -125,15 +144,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </nav>
       ) : null}
 
-      <FinalCta
-        title={
-          <>
-            Have a similar
-            <br />
-            challenge?
-          </>
-        }
-      />
+      <FinalCta locale={locale} title={[caseStudy.ctaTitleA, caseStudy.ctaTitleB]} />
     </>
   );
 }

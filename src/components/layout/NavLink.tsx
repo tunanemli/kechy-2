@@ -1,13 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useSelectedLayoutSegments } from "next/navigation";
 
-type NavLinkProps = Omit<React.ComponentPropsWithoutRef<typeof Link>, "href"> & { href: string };
+type NavLinkProps = Omit<React.ComponentPropsWithoutRef<typeof Link>, "href"> & {
+  href: string;
+  /** First internal route segment of the section, e.g. "work". */
+  section: string;
+};
 
-/** A link that marks itself as the current page (also for nested pages, e.g. /work/[slug]). */
-export function NavLink({ href, ...props }: NavLinkProps) {
-  const pathname = usePathname();
-  const isCurrent = !href.includes("#") && href !== "/" && (pathname === href || pathname.startsWith(`${href}/`));
-  return <Link href={href} aria-current={isCurrent ? "page" : undefined} {...props} />;
+/** A link that marks itself as current while any page in its section is open. */
+export function NavLink({ href, section, ...props }: NavLinkProps) {
+  // Internal segments rather than the browser pathname: localized URLs are rewrites.
+  const [current] = useSelectedLayoutSegments();
+  return <Link href={href} aria-current={current === section ? "page" : undefined} {...props} />;
 }

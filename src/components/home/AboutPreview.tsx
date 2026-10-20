@@ -1,42 +1,32 @@
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
-import { isLive, routes } from "@/lib/routes";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/routing";
+import { liveHref, routes } from "@/lib/routes";
 
-const disciplines = [
-  {
-    title: "Marketing & creative",
-    body: "Social media strategy, content, campaigns and creative production, planned around what your audience responds to.",
-  },
-  {
-    title: "Development & technology",
-    body: "Websites, custom software, integrations and automation, built to be fast, maintainable and easy to grow.",
-  },
-];
+export function AboutPreview({ locale }: { locale: Locale }) {
+  const { aboutPreview } = getDictionary(locale);
 
-export function AboutPreview() {
   return (
     <section id="about" aria-labelledby="about-title" className="scroll-mt-18 border-t border-line py-24 lg:py-36">
       <Container className="grid gap-16 lg:grid-cols-12 lg:gap-10">
         <div className="reveal lg:col-span-6">
           <p className="flex items-center gap-3 text-xs font-medium tracking-[0.22em] text-muted uppercase">
             <span className="size-1.5 rounded-full bg-brand" aria-hidden="true" />
-            About Kechy
+            {aboutPreview.eyebrow}
           </p>
           <h2 id="about-title" className="mt-6 font-display text-h2 font-semibold text-foreground">
-            Two disciplines.
+            {aboutPreview.titleA}
             <br />
-            One focused team.
+            {aboutPreview.titleB}
           </h2>
         </div>
 
         <div className="reveal lg:col-span-5 lg:col-start-8">
-          <p className="text-lead text-foreground/90">
-            We combine creative thinking and technical execution to build digital experiences that look distinctive and
-            work hard for your business.
-          </p>
+          <p className="text-lead text-foreground/90">{aboutPreview.body}</p>
 
           <div className="mt-12 grid grid-cols-[auto_1fr] gap-x-6">
-            {disciplines.map((discipline, index) => (
+            {aboutPreview.disciplines.map((discipline, index) => (
               <div key={discipline.title} className="contents">
                 <span
                   aria-hidden="true"
@@ -52,12 +42,9 @@ export function AboutPreview() {
             ))}
           </div>
 
-          {/* Shown once the About page is published (see lib/routes.ts). */}
-          {isLive(routes.about) ? (
-            <Button href={routes.about} variant="secondary" arrow className="mt-12">
-              More about us
-            </Button>
-          ) : null}
+          <Button href={liveHref(locale, routes.about)} variant="secondary" arrow className="mt-12">
+            {aboutPreview.more}
+          </Button>
         </div>
       </Container>
     </section>
