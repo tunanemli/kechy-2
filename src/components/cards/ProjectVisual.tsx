@@ -18,7 +18,7 @@ function CampaignVisual() {
   return (
     <div className="absolute inset-0 bg-brand">
       {/* Key visual */}
-      <div className="absolute top-[12%] bottom-[12%] left-[7%] w-[44%] overflow-hidden rounded-[4px] bg-background">
+      <div className="absolute top-[12%] bottom-[12%] left-[7%] w-[40%] overflow-hidden rounded-[4px] bg-background">
         <div className="absolute -right-[22%] -bottom-[14%] aspect-square w-[95%] rounded-full bg-brand" />
         <div className="absolute top-[10%] left-[10%] font-display text-[clamp(1.4rem,3.6vw,3rem)] leading-[0.9] font-semibold tracking-tight text-foreground">
           New
@@ -28,20 +28,20 @@ function CampaignVisual() {
         <div className="absolute bottom-[9%] left-[10%] h-1 w-[22%] rounded-full bg-foreground/80" />
       </div>
       {/* Post series */}
-      <div className="absolute top-[12%] right-[7%] grid w-[38%] grid-cols-2 gap-[6%]">
-        <div className="aspect-[4/5] rounded-[4px] bg-background/90 p-[12%]">
+      <div className="absolute top-[12%] right-[7%] bottom-[12%] grid aspect-[3/4] max-w-[42%] grid-cols-2 grid-rows-2 gap-[5%]">
+        <div className="min-h-0 rounded-[4px] bg-background/90 p-[12%]">
           <div className="aspect-square w-1/2 rounded-full bg-brand" />
         </div>
-        <div className="aspect-[4/5] rounded-[4px] bg-mist p-[12%]">
+        <div className="min-h-0 rounded-[4px] bg-mist p-[12%]">
           <div className="h-[55%] w-[30%] rounded-[3px] bg-background" />
         </div>
-        <div className="aspect-[4/5] rounded-[4px] bg-mist p-[12%]">
+        <div className="min-h-0 rounded-[4px] bg-mist p-[12%]">
           <div className="space-y-[10%] pt-[40%]">
             <div className="h-1.5 w-full rounded-full bg-background/80" />
             <div className="h-1.5 w-2/3 rounded-full bg-background/80" />
           </div>
         </div>
-        <div className="flex aspect-[4/5] items-center justify-center rounded-[4px] bg-background/90">
+        <div className="flex min-h-0 items-center justify-center rounded-[4px] bg-background/90">
           {/* Play symbol: short-form video concept */}
           <div className="ml-[8%] size-0 border-y-[10px] border-l-[16px] border-y-transparent border-l-brand" />
         </div>

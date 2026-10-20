@@ -4,6 +4,7 @@ import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { mainNav } from "@/components/layout/navigation";
+import { NavLink } from "@/components/layout/NavLink";
 import { Button } from "@/components/ui/Button";
 import { routes } from "@/lib/routes";
 
@@ -25,12 +26,12 @@ export function Header() {
           <ul className="flex items-center gap-10">
             {mainNav.map((item) => (
               <li key={item.label}>
-                <Link
+                <NavLink
                   href={item.href}
-                  className="relative py-2 text-sm text-muted transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100"
+                  className="relative py-2 text-sm text-muted transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100 aria-[current=page]:text-foreground aria-[current=page]:after:scale-x-100"
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>

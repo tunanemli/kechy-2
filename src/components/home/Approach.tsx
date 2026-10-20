@@ -8,14 +8,22 @@ const steps = [
   { number: "04", title: "Improve", body: "Measure performance, learn, and optimize." },
 ];
 
-export function Approach() {
+type ApproachProps = {
+  eyebrow?: string;
+  title?: string;
+};
+
+export function Approach({
+  eyebrow = "Our approach",
+  title = "A clear process, from first conversation to results.",
+}: ApproachProps) {
   return (
     <section id="approach" aria-labelledby="approach-title" className="scroll-mt-18 border-t border-line py-24 lg:py-36">
       <Container>
         <SectionHeading
           id="approach-title"
-          eyebrow="Our approach"
-          title="A clear process, from first conversation to results."
+          eyebrow={eyebrow}
+          title={title}
           className="reveal"
         />
 

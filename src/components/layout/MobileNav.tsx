@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { NavLink } from "@/components/layout/NavLink";
 import type { NavItem } from "@/components/layout/navigation";
 import { Button } from "@/components/ui/Button";
 import { routes } from "@/lib/routes";
@@ -75,16 +75,16 @@ export function MobileNav({ items }: { items: NavItem[] }) {
             <ul className="flex flex-col">
               {items.map((item, index) => (
                 <li key={item.label} className="border-b border-line">
-                  <Link
+                  <NavLink
                     href={item.href}
                     onClick={() => close()}
-                    className="flex items-baseline gap-4 py-5 font-display text-4xl font-semibold tracking-tight text-foreground transition-colors hover:text-brand"
+                    className="flex items-baseline gap-4 py-5 font-display text-4xl font-semibold tracking-tight text-foreground transition-colors hover:text-brand aria-[current=page]:text-brand"
                   >
                     <span className="w-6 shrink-0 font-sans text-xs font-medium tracking-[0.2em] text-subtle">
                       0{index + 1}
                     </span>
                     {item.label}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>

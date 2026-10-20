@@ -2,7 +2,23 @@ import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { routes } from "@/lib/routes";
 
-export function FinalCta() {
+type FinalCtaProps = {
+  title?: React.ReactNode;
+  body?: string;
+  action?: string;
+};
+
+export function FinalCta({
+  title = (
+    <>
+      Have a project
+      <br />
+      in mind?
+    </>
+  ),
+  body = "Tell us what you're building. Let's explore how we can make it happen.",
+  action = "Start a conversation",
+}: FinalCtaProps) {
   return (
     <section aria-labelledby="cta-title" className="relative overflow-hidden border-t border-line">
       {/* The logo's dot, scaled up as the closing brand mark */}
@@ -12,17 +28,15 @@ export function FinalCta() {
       />
 
       <Container className="relative py-28 lg:py-44">
-        <div className="reveal max-w-[16ch] sm:max-w-none">
+        <div className="reveal">
           <h2 id="cta-title" className="font-display text-display font-semibold text-foreground">
-            Have a project
-            <br />
-            in mind?
+            {title}
           </h2>
         </div>
         <div className="reveal mt-10 flex max-w-xl flex-col items-start gap-10 lg:mt-14">
-          <p className="text-lead text-muted">Tell us what you&apos;re building. Let&apos;s explore how we can make it happen.</p>
+          <p className="text-lead text-muted">{body}</p>
           <Button href={routes.contact} size="lg" arrow>
-            Start a conversation
+            {action}
           </Button>
         </div>
       </Container>

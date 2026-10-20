@@ -3,7 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { projects } from "@/data/projects";
-import { routes } from "@/lib/routes";
+import { isLive, routes } from "@/lib/routes";
 
 /** Asymmetric placement for up to three projects; extra projects fall back to a half-width slot. */
 const layout = [
@@ -22,7 +22,14 @@ export function SelectedWork() {
           id="work-title"
           eyebrow="Selected work"
           title="Concepts that show how we think."
-          description="Our first client case studies are in preparation. Until they are published, these clearly labelled concept projects show how we approach campaigns, digital products and platforms."
+          description="Our first client case studies are in preparation. Until they are published, these clearly labeled concept projects show how we approach campaigns, digital products and platforms."
+          aside={
+            isLive(routes.work) ? (
+              <Button href={routes.work} variant="secondary" arrow>
+                View all work
+              </Button>
+            ) : null
+          }
           className="reveal"
         />
 

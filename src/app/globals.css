@@ -25,6 +25,9 @@
   --text-display: clamp(3.75rem, 9vw, 8.5rem);
   --text-display--line-height: 0.9;
   --text-display--letter-spacing: -0.045em;
+  --text-h1: clamp(3rem, 7vw, 6.5rem);
+  --text-h1--line-height: 0.95;
+  --text-h1--letter-spacing: -0.04em;
   --text-h2: clamp(2.4rem, 5.4vw, 4.75rem);
   --text-h2--line-height: 0.98;
   --text-h2--letter-spacing: -0.035em;

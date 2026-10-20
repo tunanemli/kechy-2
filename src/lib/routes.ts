@@ -1,3 +1,5 @@
+import { projects } from "@/data/projects";
+
 /**
  * Single source of truth for the site's routes.
  *
@@ -21,7 +23,17 @@ export const routes = {
 
 export type RoutePath = (typeof routes)[keyof typeof routes];
 
-const liveRoutes = new Set<string>([routes.home, routes.contact]);
+const liveRoutes = new Set<string>([
+  routes.home,
+  routes.work,
+  routes.services,
+  routes.socialMediaMarketing,
+  routes.webDevelopment,
+  routes.performanceMarketing,
+  routes.about,
+  routes.contact,
+  ...projects.map((project) => caseStudyPath(project.slug)),
+]);
 
 /** Where a not-yet-built route points in the meantime. `null` = nowhere sensible yet. */
 const fallbacks: Record<RoutePath, string | null> = {

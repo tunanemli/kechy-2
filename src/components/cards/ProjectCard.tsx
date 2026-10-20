@@ -10,10 +10,12 @@ type ProjectCardProps = {
   project: Project;
   /** Larger visual for the lead project in a layout. */
   featured?: boolean;
+  /** Overrides the visual's aspect ratio classes. */
+  aspectClassName?: string;
   className?: string;
 };
 
-export function ProjectCard({ project, featured = false, className }: ProjectCardProps) {
+export function ProjectCard({ project, featured = false, aspectClassName, className }: ProjectCardProps) {
   const href = caseStudyPath(project.slug);
   const hasCaseStudy = isLive(href);
   const headingId = `project-${project.slug}`;
@@ -23,7 +25,7 @@ export function ProjectCard({ project, featured = false, className }: ProjectCar
       <div
         className={cn(
           "relative overflow-hidden rounded-[6px] border border-line bg-surface",
-          featured ? "aspect-[4/3] lg:aspect-[16/12]" : "aspect-[4/3]",
+          aspectClassName ?? (featured ? "aspect-[4/3] lg:aspect-[16/12]" : "aspect-[4/3]"),
         )}
       >
         <div className="absolute inset-0 transition-transform duration-700 ease-out-soft motion-safe:group-hover:scale-[1.03]">
