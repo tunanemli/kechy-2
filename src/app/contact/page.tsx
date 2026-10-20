@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactForm } from "@/components/sections/ContactForm";
-import { Footer } from "@/components/sections/Footer";
-import { Header } from "@/components/sections/Header";
 
 export const metadata: Metadata = {
   title: "İletişim — Kechy",
@@ -13,11 +11,10 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Header />
-      <main className="flex-1 pt-[72px]">
+      <div>
         <section className="border-b border-zinc-800 bg-black px-4 py-16 text-white md:px-6 md:py-20 lg:px-8">
           <div className="mx-auto max-w-[1440px]">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--color-lime)]">KECHY</p>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--color-brand)]">KECHY</p>
             <h1 className="mt-4 font-display text-4xl font-extrabold uppercase leading-tight tracking-tight md:text-5xl">
               İletişim
             </h1>
@@ -68,8 +65,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
+      </div>
     </>
   );
 }

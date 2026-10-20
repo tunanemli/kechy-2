@@ -22,7 +22,7 @@ export function ContactForm() {
           type="text"
           autoComplete="name"
           required
-          className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-lime)] focus:outline-none focus:ring-2 focus:ring-[var(--color-lime)]/40"
+          className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/40"
           placeholder="Adınız ve soyadınız"
         />
       </div>
@@ -36,7 +36,7 @@ export function ContactForm() {
           type="email"
           autoComplete="email"
           required
-          className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-lime)] focus:outline-none focus:ring-2 focus:ring-[var(--color-lime)]/40"
+          className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/40"
           placeholder="ornek@gmail.com"
         />
       </div>
@@ -49,14 +49,14 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
-          className="w-full resize-y rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-lime)] focus:outline-none focus:ring-2 focus:ring-[var(--color-lime)]/40"
+          className="w-full resize-y rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/40"
           placeholder="Projenizden kısaca bahsedin…"
         />
       </div>
       <button
         type="submit"
         disabled={sent}
-        className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-lime)] px-8 text-sm font-semibold text-black transition-transform hover:scale-[1.01] disabled:cursor-default disabled:opacity-80 sm:w-auto"
+        className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-brand)] px-8 text-sm font-semibold text-black transition-transform hover:scale-[1.01] disabled:cursor-default disabled:opacity-80 sm:w-auto"
       >
         {sent ? "Mesajınız alındı" : "Gönder"}
       </button>

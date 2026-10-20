@@ -1,37 +1,28 @@
-import { Beliefs } from "@/components/sections/Beliefs";
-import { BlogTeaser } from "@/components/sections/BlogTeaser";
-import { Faq } from "@/components/sections/Faq";
-import { Footer } from "@/components/sections/Footer";
-import { Header } from "@/components/sections/Header";
-import { Hero } from "@/components/sections/Hero";
-import { Marquee } from "@/components/sections/Marquee";
-import { Mission } from "@/components/sections/Mission";
-import { Newsletter } from "@/components/sections/Newsletter";
-import { Partners } from "@/components/sections/Partners";
-import { Portfolio } from "@/components/sections/Portfolio";
-import { Services } from "@/components/sections/Services";
-import { Stats } from "@/components/sections/Stats";
-import { Testimonials } from "@/components/sections/Testimonials";
+import type { Metadata } from "next";
+import { AboutPreview } from "@/components/home/AboutPreview";
+import { Approach } from "@/components/home/Approach";
+import { FinalCta } from "@/components/home/FinalCta";
+import { Hero } from "@/components/home/Hero";
+import { SelectedWork } from "@/components/home/SelectedWork";
+import { ServicesPreview } from "@/components/home/ServicesPreview";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: `${site.name} — We make brands grow` },
+  description:
+    "A creative and technology studio combining social media marketing and web development. Campaigns, websites and custom software for brands that want to grow.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <Marquee />
-        <Services />
-        <Portfolio />
-        <Mission />
-        <Stats />
-        <Beliefs />
-        <Testimonials />
-        <Faq />
-        <BlogTeaser />
-        <Partners />
-        <Newsletter />
-      </main>
-      <Footer />
+      <Hero />
+      <ServicesPreview />
+      <SelectedWork />
+      <Approach />
+      <AboutPreview />
+      <FinalCta />
     </>
   );
 }

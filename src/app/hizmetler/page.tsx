@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Footer } from "@/components/sections/Footer";
-import { Header } from "@/components/sections/Header";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
@@ -13,11 +11,10 @@ export const metadata: Metadata = {
 export default function HizmetlerPage() {
   return (
     <>
-      <Header />
-      <main className="flex-1 pt-[72px]">
+      <div>
         <section className="border-b border-zinc-800 bg-black px-4 py-16 text-white md:px-6 md:py-24 lg:px-8">
           <div className="mx-auto max-w-[1440px]">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--color-lime)]">KECHY</p>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--color-brand)]">KECHY</p>
             <h1 className="mt-4 font-display text-4xl font-extrabold uppercase leading-tight tracking-tight md:text-5xl lg:text-6xl">
               Hizmetler
             </h1>
@@ -27,7 +24,7 @@ export default function HizmetlerPage() {
             </p>
             <Link
               href="/contact"
-              className="mt-10 inline-flex h-12 items-center gap-2 rounded-full bg-[var(--color-lime)] px-8 text-sm font-semibold text-black transition-transform hover:scale-[1.02]"
+              className="mt-10 inline-flex h-12 items-center gap-2 rounded-full bg-[var(--color-brand)] px-8 text-sm font-semibold text-black transition-transform hover:scale-[1.02]"
             >
               Proje konuşalım
               <span aria-hidden>→</span>
@@ -54,7 +51,7 @@ export default function HizmetlerPage() {
                   <ul className="mt-8 grid gap-3 sm:grid-cols-2">
                     {s.highlights.map((h) => (
                       <li key={h} className="flex items-start gap-2 text-sm text-zinc-800 md:text-base">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-lime)]" aria-hidden />
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-brand)]" aria-hidden />
                         {h}
                       </li>
                     ))}
@@ -96,8 +93,7 @@ export default function HizmetlerPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
+      </div>
     </>
   );
 }
