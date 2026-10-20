@@ -16,6 +16,14 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Environment variables
+
+Copy `.env.example` to `.env.local` (or set the variables in your hosting provider) and fill in the values:
+
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Public URL of the live site, e.g. `https://example.com`. Used for canonical URLs, hreflang links, the sitemap and Open Graph images. Set it before deploying. |
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
