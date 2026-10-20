@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const categories = ["Tümü", "Uygulama tasarımı", "Markalaşma", "Pazarlama", "Geliştirme"] as const;
@@ -56,13 +57,13 @@ export function Portfolio() {
               Yakın zamanda tamamlanan projeler
             </h2>
           </div>
-          <a
+          <Link
             href="/contact"
             className="inline-flex h-12 w-fit items-center gap-2 rounded-full border-2 border-black px-8 text-sm font-semibold hover:bg-black hover:text-white"
           >
             Daha fazla proje
             <span aria-hidden>→</span>
-          </a>
+          </Link>
         </div>
 
         <div className="mt-12">
@@ -102,7 +103,7 @@ function PortfolioGrid({ category }: { category: Category }) {
               key={p.title}
               className={`group ${i % 2 === 1 ? "md:mt-24" : ""}`}
             >
-              <a href="/contact" className="block overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition-shadow hover:shadow-lg">
+              <Link href="/contact" className="block overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition-shadow hover:shadow-lg">
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
                   <Image
                     src={p.src}
@@ -118,7 +119,7 @@ function PortfolioGrid({ category }: { category: Category }) {
                     {p.tag}
                   </span>
                 </div>
-              </a>
+              </Link>
             </article>
           ))}
         </div>

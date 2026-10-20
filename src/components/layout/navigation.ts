@@ -1,14 +1,15 @@
-import { resolveHref, routes, type RoutePath } from "@/lib/routes";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/routing";
+import { liveHref, routes } from "@/lib/routes";
 
-export type NavItem = { label: string; href: string };
+/** `section` is the first internal route segment, used to mark the current page. */
+export type NavItem = { label: string; href: string; section: string };
 
-function navItem(label: string, path: RoutePath): NavItem {
-  // Nav routes always have a fallback, so this never resolves to null.
-  return { label, href: resolveHref(path) ?? routes.home };
+export function getMainNav(locale: Locale): NavItem[] {
+  const { nav } = getDictionary(locale);
+  return [
+    { label: nav.work, href: liveHref(locale, routes.work), section: "work" },
+    { label: nav.services, href: liveHref(locale, routes.services), section: "services" },
+    { label: nav.about, href: liveHref(locale, routes.about), section: "about" },
+  ];
 }
-
-export const mainNav: NavItem[] = [
-  navItem("Work", routes.work),
-  navItem("Services", routes.services),
-  navItem("About", routes.about),
-];

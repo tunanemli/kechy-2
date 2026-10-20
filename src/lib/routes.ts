@@ -1,12 +1,19 @@
-import { projects } from "@/data/projects";
+import {
+  caseStudySlugs,
+  localizeCaseStudy,
+  localizePath,
+  type CaseStudySlug,
+  type InternalPath,
+  type Locale,
+} from "@/i18n/routing";
 
 /**
- * Single source of truth for the site's routes.
+ * Site routes as internal paths. Use `href(locale, path)` to get the public,
+ * localized URL for a link.
  *
- * Pages ship in phases. A route listed in `liveRoutes` has a real page; every
- * other route resolves to a fallback on a page that already exists, so links
- * are never broken. When a page ships, add its path to `liveRoutes` and every
- * link to it updates automatically.
+ * Pages ship in phases: a route not in `liveRoutes` has no page yet, and
+ * `href` returns null for it so callers can render it as "coming soon"
+ * instead of a broken link. When a page ships, add it to `liveRoutes`.
  */
 export const routes = {
   home: "/",
@@ -19,11 +26,11 @@ export const routes = {
   contact: "/contact",
   privacyPolicy: "/privacy-policy",
   cookiePolicy: "/cookie-policy",
-} as const;
+} as const satisfies Record<string, InternalPath>;
 
 export type RoutePath = (typeof routes)[keyof typeof routes];
 
-const liveRoutes = new Set<string>([
+const liveRoutes = new Set<InternalPath>([
   routes.home,
   routes.work,
   routes.services,
@@ -32,32 +39,26 @@ const liveRoutes = new Set<string>([
   routes.performanceMarketing,
   routes.about,
   routes.contact,
-  ...projects.map((project) => caseStudyPath(project.slug)),
 ]);
 
-/** Where a not-yet-built route points in the meantime. `null` = nowhere sensible yet. */
-const fallbacks: Record<RoutePath, string | null> = {
-  [routes.home]: null,
-  [routes.work]: "/#work",
-  [routes.services]: "/#services",
-  [routes.socialMediaMarketing]: "/#services",
-  [routes.webDevelopment]: "/#services",
-  [routes.performanceMarketing]: "/#services",
-  [routes.about]: "/#about",
-  [routes.contact]: null,
-  [routes.privacyPolicy]: null,
-  [routes.cookiePolicy]: null,
-};
-
-export function isLive(path: string) {
+export function isLive(path: InternalPath) {
   return liveRoutes.has(path);
 }
 
-/** The href to use for a route today: the route itself if live, else its fallback. */
-export function resolveHref(path: RoutePath): string | null {
-  return isLive(path) ? path : fallbacks[path];
+/** Public URL of a live page in the given locale, or null if the page doesn't exist yet. */
+export function href(locale: Locale, path: InternalPath): string | null {
+  return isLive(path) ? localizePath(locale, path) : null;
 }
 
-export function caseStudyPath(slug: string) {
-  return `${routes.work}/${slug}`;
+/** Like `href`, for pages that are always live (navigation, CTAs). */
+export function liveHref(locale: Locale, path: RoutePath): string {
+  return localizePath(locale, path);
+}
+
+export function isCaseStudySlug(slug: string): slug is CaseStudySlug {
+  return slug in caseStudySlugs;
+}
+
+export function caseStudyHref(locale: Locale, slug: CaseStudySlug) {
+  return localizeCaseStudy(locale, slug);
 }

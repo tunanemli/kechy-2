@@ -2,7 +2,23 @@
 
 import { useState } from "react";
 
-export function ContactForm() {
+type ContactFormLabels = {
+  name: string;
+  namePlaceholder: string;
+  email: string;
+  emailPlaceholder: string;
+  message: string;
+  messagePlaceholder: string;
+  submit: string;
+  sent: string;
+  thanks: string;
+};
+
+const fieldClass =
+  "w-full rounded-[6px] border border-line bg-background px-4 text-sm text-foreground placeholder:text-subtle transition-colors focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30";
+
+// TODO: no submission mechanism is connected yet; messages are not sent anywhere.
+export function ContactForm({ labels }: { labels: ContactFormLabels }) {
   const [sent, setSent] = useState(false);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -13,8 +29,8 @@ export function ContactForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-5" noValidate>
       <div>
-        <label htmlFor="contact-name" className="mb-2 block text-sm font-medium text-zinc-700">
-          Ad soyad
+        <label htmlFor="contact-name" className="mb-2 block text-sm font-medium text-foreground">
+          {labels.name}
         </label>
         <input
           id="contact-name"
@@ -22,13 +38,13 @@ export function ContactForm() {
           type="text"
           autoComplete="name"
           required
-          className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/40"
-          placeholder="Adınız ve soyadınız"
+          className={`h-12 ${fieldClass}`}
+          placeholder={labels.namePlaceholder}
         />
       </div>
       <div>
-        <label htmlFor="contact-email" className="mb-2 block text-sm font-medium text-zinc-700">
-          E-posta
+        <label htmlFor="contact-email" className="mb-2 block text-sm font-medium text-foreground">
+          {labels.email}
         </label>
         <input
           id="contact-email"
@@ -36,33 +52,31 @@ export function ContactForm() {
           type="email"
           autoComplete="email"
           required
-          className="h-12 w-full rounded-xl border border-zinc-300 bg-white px-4 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/40"
-          placeholder="ornek@gmail.com"
+          className={`h-12 ${fieldClass}`}
+          placeholder={labels.emailPlaceholder}
         />
       </div>
       <div>
-        <label htmlFor="contact-message" className="mb-2 block text-sm font-medium text-zinc-700">
-          Mesajınız
+        <label htmlFor="contact-message" className="mb-2 block text-sm font-medium text-foreground">
+          {labels.message}
         </label>
         <textarea
           id="contact-message"
           name="message"
           rows={5}
           required
-          className="w-full resize-y rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-black placeholder:text-zinc-400 focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/40"
-          placeholder="Projenizden kısaca bahsedin…"
+          className={`resize-y py-3 ${fieldClass}`}
+          placeholder={labels.messagePlaceholder}
         />
       </div>
       <button
         type="submit"
         disabled={sent}
-        className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-brand)] px-8 text-sm font-semibold text-black transition-transform hover:scale-[1.01] disabled:cursor-default disabled:opacity-80 sm:w-auto"
+        className="inline-flex h-12 w-full items-center justify-center rounded-full bg-brand px-8 text-sm font-medium text-background transition-colors hover:bg-brand-bright disabled:cursor-default disabled:opacity-80 sm:w-auto"
       >
-        {sent ? "Mesajınız alındı" : "Gönder"}
+        {sent ? labels.sent : labels.submit}
       </button>
-      {sent ? (
-        <p className="text-sm text-zinc-600">Teşekkürler. En kısa sürede size dönüş yapacağız.</p>
-      ) : null}
+      {sent ? <p className="text-sm text-muted">{labels.thanks}</p> : null}
     </form>
   );
 }

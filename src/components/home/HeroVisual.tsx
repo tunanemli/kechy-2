@@ -1,17 +1,21 @@
 import { Logo } from "@/components/layout/Logo";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/routing";
 
 /**
  * Hero brand composition: the creative side (the brand tile with the supplied
  * logo) layered with the technical side (a code window). Decorative only; the
  * headline carries the message.
  */
-export function HeroVisual() {
+export function HeroVisual({ locale }: { locale: Locale }) {
+  const { visual } = getDictionary(locale).hero;
+
   return (
     <div aria-hidden="true" className="relative mx-auto aspect-[5/6] w-full max-w-[520px] sm:aspect-[6/5] lg:aspect-[5/6]">
       {/* Creative: brand tile */}
       <div className="absolute top-0 right-0 flex h-[68%] w-[82%] flex-col justify-between overflow-hidden rounded-[6px] bg-brand p-[6%]">
         <div className="flex items-center justify-between text-[0.6875rem] font-medium tracking-[0.2em] text-background uppercase">
-          <span>Creative</span>
+          <span>{visual.creative}</span>
           <span>01</span>
         </div>
         <Logo variant="white" width={260} alt="" className="max-w-[78%]" />
@@ -31,7 +35,7 @@ export function HeroVisual() {
             <span className="size-2 rounded-full bg-line" />
             <span className="size-2 rounded-full bg-line" />
           </div>
-          <span className="text-[0.6875rem] font-medium tracking-[0.2em] text-subtle uppercase">Technology 02</span>
+          <span className="text-[0.6875rem] font-medium tracking-[0.2em] text-subtle uppercase">{visual.technology} 02</span>
         </div>
         <pre className="overflow-hidden px-4 py-5 font-mono text-[clamp(0.625rem,1.7vw,0.8125rem)] leading-[1.9] text-muted sm:px-5">
           <code>
@@ -39,11 +43,11 @@ export function HeroVisual() {
             <span className="text-mist">export const</span> brand = {"{"}
             {"\n"}
             <span className="text-subtle">02 </span>
-            {"  "}idea: <span className="text-brand">&quot;distinctive&quot;</span>,{"\n"}
+            {"  "}idea: <span className="text-brand">&quot;{visual.idea}&quot;</span>,{"\n"}
             <span className="text-subtle">03 </span>
-            {"  "}build: <span className="text-brand">&quot;fast &amp; solid&quot;</span>,{"\n"}
+            {"  "}build: <span className="text-brand">&quot;{visual.build}&quot;</span>,{"\n"}
             <span className="text-subtle">04 </span>
-            {"  "}goal: <span className="text-brand">&quot;grow&quot;</span>,{"\n"}
+            {"  "}goal: <span className="text-brand">&quot;{visual.goal}&quot;</span>,{"\n"}
             <span className="text-subtle">05 </span>
             {"}"};
           </code>

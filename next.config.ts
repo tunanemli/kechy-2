@@ -1,9 +1,24 @@
 import type { NextConfig } from "next";
+import { localeRedirects, localeRewrites, pathnames } from "./src/i18n/routing";
+
+/** English pages lived at the site root before Turkish became the default locale. */
+const legacyEnglishRedirects = Object.keys(pathnames)
+  .filter((path) => path !== "/")
+  .flatMap((path) => [
+    { source: path, destination: `/en${path}`, permanent: true },
+    ...(path === "/work" ? [{ source: "/work/:slug", destination: "/en/work/:slug", permanent: true }] : []),
+  ]);
 
 const nextConfig: NextConfig = {
+  experimental: {
+    globalNotFound: true,
+  },
   async redirects() {
-    // The original Turkish services page is replaced by /services.
-    return [{ source: "/hizmetler", destination: "/services", permanent: true }];
+    return [...localeRedirects(), ...legacyEnglishRedirects];
+  },
+  async rewrites() {
+    // Localized public URLs (e.g. /isler) map onto the app/[lang] routes (/tr/work).
+    return { beforeFiles: localeRewrites(), afterFiles: [], fallback: [] };
   },
   images: {
     remotePatterns: [

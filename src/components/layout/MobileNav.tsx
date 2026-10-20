@@ -5,9 +5,16 @@ import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { NavLink } from "@/components/layout/NavLink";
 import type { NavItem } from "@/components/layout/navigation";
 import { Button } from "@/components/ui/Button";
-import { routes } from "@/lib/routes";
+import type { Locale } from "@/i18n/routing";
 
-export function MobileNav({ items }: { items: NavItem[] }) {
+type MobileNavProps = {
+  locale: Locale;
+  items: NavItem[];
+  contactHref: string;
+  labels: { nav: string; open: string; close: string; contact: string; language: string };
+};
+
+export function MobileNav({ locale, items, contactHref, labels }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -54,7 +61,7 @@ export function MobileNav({ items }: { items: NavItem[] }) {
         onClick={() => setOpen((value) => !value)}
         className="-mr-2 inline-flex size-11 items-center justify-center rounded-full text-foreground transition-colors hover:bg-white/5"
       >
-        <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+        <span className="sr-only">{open ? labels.close : labels.open}</span>
         <span aria-hidden="true" className="relative block h-3 w-5">
           <span
             className={`absolute left-0 h-[1.5px] w-full bg-current transition-transform duration-300 ${open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"}`}
@@ -71,12 +78,13 @@ export function MobileNav({ items }: { items: NavItem[] }) {
           id="mobile-nav"
           className="fixed inset-x-0 top-18 bottom-0 z-40 flex flex-col overflow-y-auto border-t border-line bg-background px-5 pt-10 pb-8 sm:px-8"
         >
-          <nav aria-label="Mobile">
+          <nav aria-label={labels.nav}>
             <ul className="flex flex-col">
               {items.map((item, index) => (
-                <li key={item.label} className="border-b border-line">
+                <li key={item.section} className="border-b border-line">
                   <NavLink
                     href={item.href}
+                    section={item.section}
                     onClick={() => close()}
                     className="flex items-baseline gap-4 py-5 font-display text-4xl font-semibold tracking-tight text-foreground transition-colors hover:text-brand aria-[current=page]:text-brand"
                   >
@@ -91,9 +99,9 @@ export function MobileNav({ items }: { items: NavItem[] }) {
           </nav>
 
           <div className="mt-auto flex flex-col gap-8 pt-12">
-            <LanguageSwitcher />
-            <Button href={routes.contact} size="lg" arrow onClick={() => close()} className="w-full">
-              Contact us
+            <LanguageSwitcher locale={locale} label={labels.language} />
+            <Button href={contactHref} size="lg" arrow onClick={() => close()} className="w-full">
+              {labels.contact}
             </Button>
           </div>
         </div>

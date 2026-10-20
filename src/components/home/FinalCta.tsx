@@ -1,24 +1,21 @@
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
-import { routes } from "@/lib/routes";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/routing";
+import { liveHref, routes } from "@/lib/routes";
 
 type FinalCtaProps = {
-  title?: React.ReactNode;
+  locale: Locale;
+  /** Two-line headline; defaults to the general "project in mind" prompt. */
+  title?: [string, string];
   body?: string;
   action?: string;
 };
 
-export function FinalCta({
-  title = (
-    <>
-      Have a project
-      <br />
-      in mind?
-    </>
-  ),
-  body = "Tell us what you're building. Let's explore how we can make it happen.",
-  action = "Start a conversation",
-}: FinalCtaProps) {
+export function FinalCta({ locale, title, body, action }: FinalCtaProps) {
+  const { cta } = getDictionary(locale);
+  const [lineA, lineB] = title ?? [cta.titleA, cta.titleB];
+
   return (
     <section aria-labelledby="cta-title" className="relative overflow-hidden border-t border-line">
       {/* The logo's dot, scaled up as the closing brand mark */}
@@ -30,13 +27,15 @@ export function FinalCta({
       <Container className="relative py-28 lg:py-44">
         <div className="reveal">
           <h2 id="cta-title" className="font-display text-display font-semibold text-foreground">
-            {title}
+            {lineA}
+            <br />
+            {lineB}
           </h2>
         </div>
         <div className="reveal mt-10 flex max-w-xl flex-col items-start gap-10 lg:mt-14">
-          <p className="text-lead text-muted">{body}</p>
-          <Button href={routes.contact} size="lg" arrow>
-            {action}
+          <p className="text-lead text-muted">{body ?? cta.body}</p>
+          <Button href={liveHref(locale, routes.contact)} size="lg" arrow>
+            {action ?? cta.action}
           </Button>
         </div>
       </Container>
