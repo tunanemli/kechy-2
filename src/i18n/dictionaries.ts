@@ -344,9 +344,9 @@ const tr: Dictionary = {
     more: "Bizi daha yakından tanıyın",
   },
   cta: {
-    titleA: "Aklınızda bir",
-    titleB: "fikir mi var?",
-    body: "Ne üzerinde çalıştığınızı anlatın; nasıl hayata geçirebileceğimizi birlikte konuşalım.",
+    titleA: "Bir fikriniz",
+    titleB: "mi var?",
+    body: "Fikrinizi anlatın; nasıl hayata geçirebileceğimizi birlikte konuşalım.",
     action: "Bize ulaşın",
   },
   workPage: {
