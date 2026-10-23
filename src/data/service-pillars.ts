@@ -1,3 +1,5 @@
+import { formatServiceAreas } from "@/data/service-areas";
+import { getDictionary } from "@/i18n/dictionaries";
 import type { CaseStudySlug, Locale } from "@/i18n/routing";
 import { liveHref, routes, type RoutePath } from "@/lib/routes";
 
@@ -418,7 +420,15 @@ const pillars: PillarDefinition[] = [
 
 function localize(pillar: PillarDefinition, locale: Locale): ServicePillar {
   const { content, ...base } = pillar;
-  return { ...base, ...content[locale], href: liveHref(locale, pillar.route) };
+  const { serviceDetail } = getDictionary(locale);
+  const page = content[locale].page;
+  const areasFaq = { question: serviceDetail.areasQuestion, answer: serviceDetail.areasAnswer(formatServiceAreas(locale)) };
+  return {
+    ...base,
+    ...content[locale],
+    page: { ...page, faq: [...page.faq, areasFaq] },
+    href: liveHref(locale, pillar.route),
+  };
 }
 
 export function getServicePillars(locale: Locale): ServicePillar[] {

@@ -5,10 +5,10 @@ const en = {
     ogLocale: "en_US",
     tagline: "Creative × Technology Studio",
     description:
-      "Istanbul-based creative and technology studio. Social media marketing, websites, e-commerce and digital advertising that help brands stand out and grow.",
+      "Creative studio serving Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük: social media, websites, e-commerce and digital advertising.",
     homeTitle: "Kechy Creative | Social Media & Web Studio, Istanbul",
     homeDescription:
-      "Creative and technology studio in Istanbul: social media management, corporate websites, e-commerce and digital advertising to help your brand grow.",
+      "Social media, corporate websites, e-commerce and digital advertising for brands in Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük.",
   },
   common: {
     skipToContent: "Skip to content",
@@ -36,6 +36,8 @@ const en = {
     privacy: "Privacy policy",
     cookies: "Cookie policy",
     rights: "All rights reserved.",
+    areasLabel: "Service areas",
+    areasRemote: "Remote, worldwide",
   },
   hero: {
     eyebrowA: "Creative",
@@ -166,6 +168,9 @@ const en = {
     otherServices: "Other services",
     faqEyebrow: "Frequently asked questions",
     faqTitle: "Questions we often hear.",
+    areasQuestion: "Which cities do you serve?",
+    areasAnswer: (areas: string) =>
+      `We're based in Istanbul and work with businesses in ${areas}. We also work remotely with brands in other cities and abroad.`,
   },
   aboutPage: {
     metaTitle: "About Us",
@@ -211,14 +216,16 @@ const en = {
   },
   contactPage: {
     metaTitle: "Contact",
-    metaDescription: "Start a project with Kechy Creative. Email kechycreative@gmail.com or send a message. We're based in Istanbul and work remotely worldwide.",
+    metaDescription: "Email kechycreative@gmail.com to start a project. We serve Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük, and work remotely.",
     eyebrow: "Contact",
     title: "Let's talk about your project.",
     lead: "Write to us about a new project, a collaboration or a quote. We'll read your message and get back to you through the most suitable channel.",
     reachTitle: "Get in touch",
     reachBody: "We work flexibly, both in person and remotely. Email is the best way to reach us.",
     addressLabel: "Location",
-    address: "Istanbul · Working remotely worldwide",
+    address: "Istanbul",
+    areasLabel: "Service areas",
+    areasRemote: "We also work remotely with clients anywhere.",
     emailLabel: "Email",
     formTitle: "Send a message",
     formIntro: "Fill in the fields and press Send: your email app will open with your message ready to go.",
@@ -249,10 +256,10 @@ const tr: Dictionary = {
     ogLocale: "tr_TR",
     tagline: "Kreatif × Teknoloji Stüdyosu",
     description:
-      "İstanbul merkezli kreatif ve teknoloji stüdyosu. Sosyal medya yönetimi, web sitesi, e-ticaret ve dijital reklam hizmetleriyle markaların büyümesine yardımcı oluyoruz.",
+      "İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'teki markalara sosyal medya, web sitesi, e-ticaret ve dijital reklam hizmeti veren kreatif stüdyo.",
     homeTitle: "Kechy Creative | Sosyal Medya ve Web Ajansı, İstanbul",
     homeDescription:
-      "İstanbul merkezli kreatif ve teknoloji stüdyosu: sosyal medya yönetimi, kurumsal web sitesi, e-ticaret ve dijital reklam hizmetleriyle markanızı büyütüyoruz.",
+      "İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'te sosyal medya yönetimi, kurumsal web sitesi, e-ticaret ve dijital reklam hizmetleri.",
   },
   common: {
     skipToContent: "İçeriğe geç",
@@ -280,6 +287,8 @@ const tr: Dictionary = {
     privacy: "Gizlilik politikası",
     cookies: "Çerez politikası",
     rights: "Tüm hakları saklıdır.",
+    areasLabel: "Hizmet bölgeleri",
+    areasRemote: "Uzaktan her yerde",
   },
   hero: {
     eyebrowA: "Kreatif",
@@ -410,6 +419,9 @@ const tr: Dictionary = {
     otherServices: "Diğer hizmetler",
     faqEyebrow: "Sıkça sorulan sorular",
     faqTitle: "Merak ettikleriniz.",
+    areasQuestion: "Hangi şehirlerde hizmet veriyorsunuz?",
+    areasAnswer: (areas: string) =>
+      `İstanbul merkezliyiz ve şu şehirlerdeki işletmelerle çalışıyoruz: ${areas}. Uzaktan çalışarak diğer şehirlerdeki ve yurt dışındaki markalara da hizmet veriyoruz.`,
   },
   aboutPage: {
     metaTitle: "Hakkımızda",
@@ -455,14 +467,16 @@ const tr: Dictionary = {
   },
   contactPage: {
     metaTitle: "İletişim",
-    metaDescription: "Projeniz için Kechy Creative'e yazın: kechycreative@gmail.com. İstanbul merkezliyiz, dünya genelinde uzaktan çalışıyoruz.",
+    metaDescription: "Projeniz için kechycreative@gmail.com adresine yazın. İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'e, uzaktan her yere hizmet veriyoruz.",
     eyebrow: "İletişim",
     title: "Projenizi konuşalım.",
     lead: "Yeni bir proje, iş birliği veya teklif için bize yazın. Mesajınızı okuyup size en uygun kanaldan dönüş yapacağız.",
     reachTitle: "Bize ulaşın",
     reachBody: "Hem yüz yüze hem de uzaktan esnek bir şekilde çalışıyoruz. Bize ulaşmanın en kolay yolu e-posta.",
     addressLabel: "Konum",
-    address: "İstanbul · Dünya genelinde uzaktan",
+    address: "İstanbul",
+    areasLabel: "Hizmet bölgeleri",
+    areasRemote: "Uzaktan çalışarak her yerdeki markalara da hizmet veriyoruz.",
     emailLabel: "E-posta",
     formTitle: "Mesaj gönderin",
     formIntro: "Alanları doldurup Gönder'e bastığınızda e-posta uygulamanız, mesajınız hazır olarak açılır.",
