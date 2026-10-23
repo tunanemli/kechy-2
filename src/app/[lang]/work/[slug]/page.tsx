@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { ProjectVisual } from "@/components/cards/ProjectVisual";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Container } from "@/components/layout/Container";
@@ -69,20 +70,23 @@ export default async function CaseStudyPage({ params }: Props) {
       </PageHero>
 
       <Container className="pt-12 lg:pt-16">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border border-line bg-surface md:aspect-[21/9]">
-          {project.image ? (
-            <Image
-              src={project.image.src}
-              alt={project.image.alt}
-              fill
-              preload
-              sizes="(min-width: 1320px) 1224px, 100vw"
-              className="object-cover"
-            />
-          ) : (
-            <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
-          )}
-        </div>
+        {/* Same name as the project card's visual, so the card morphs into this on navigation. */}
+        <ViewTransition name={`project-${project.slug}`} share="project-morph">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border border-line bg-surface md:aspect-[21/9]">
+            {project.image ? (
+              <Image
+                src={project.image.src}
+                alt={project.image.alt}
+                fill
+                preload
+                sizes="(min-width: 1320px) 1224px, 100vw"
+                className="object-cover"
+              />
+            ) : (
+              <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
+            )}
+          </div>
+        </ViewTransition>
       </Container>
 
       <CaseSection id="brief" label={caseStudy.brief}>
@@ -92,7 +96,7 @@ export default async function CaseStudyPage({ params }: Props) {
       <CaseSection id="approach" label={caseStudy.approach}>
         <ol className="grid gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-2">
           {project.approach.map((step, stepIndex) => (
-            <li key={step.title} className="reveal bg-background p-7 lg:p-8">
+            <li key={step.title} className="bg-background p-7 lg:p-8">
               <span className="text-xs font-medium tracking-[0.2em] text-subtle">0{stepIndex + 1}</span>
               <h3 className="mt-6 font-display text-xl font-semibold tracking-tight text-foreground">{step.title}</h3>
               <p className="mt-3 text-base leading-relaxed text-muted">{step.body}</p>
@@ -159,7 +163,7 @@ function CaseSection({ id, label, children }: { id: string; label: string; child
         >
           {label}
         </h2>
-        <div className="reveal lg:col-span-8 lg:col-start-5">{children}</div>
+        <div className="lg:col-span-8 lg:col-start-5">{children}</div>
       </Container>
     </section>
   );

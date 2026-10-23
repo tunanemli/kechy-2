@@ -12,6 +12,8 @@ const legacyEnglishRedirects = Object.keys(pathnames)
 const nextConfig: NextConfig = {
   experimental: {
     globalNotFound: true,
+    // Shared-element transitions between a project card and its case study (React <ViewTransition>).
+    viewTransition: true,
   },
   async redirects() {
     return [...localeRedirects(), ...legacyEnglishRedirects];

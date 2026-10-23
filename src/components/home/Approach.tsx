@@ -17,21 +17,31 @@ export function Approach({ locale, variant = "default" }: ApproachProps) {
   return (
     <section id="approach" aria-labelledby="approach-title" className="scroll-mt-18 border-t border-line py-24 lg:py-36">
       <Container>
-        <SectionHeading id="approach-title" eyebrow={eyebrow} title={title} className="reveal" />
+        <SectionHeading id="approach-title" eyebrow={eyebrow} title={title} />
 
-        <ol className="mt-16 grid gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
-          {approach.steps.map((step, index) => (
-            <li key={step.title} className="reveal group flex min-h-64 flex-col bg-background p-8 lg:min-h-80">
-              <span className="font-display text-5xl font-semibold tracking-tight text-subtle transition-colors duration-500 group-hover:text-brand lg:text-6xl">
-                0{index + 1}
-              </span>
-              <h3 className="mt-auto pt-12 font-display text-2xl font-semibold tracking-tight text-foreground">
-                {step.title}
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-muted">{step.body}</p>
-            </li>
-          ))}
-        </ol>
+        {/* As the section scrolls by, a line draws across the steps and each number lights up when reached. */}
+        <div className="progress-track relative mt-16 lg:mt-24">
+          <span
+            aria-hidden="true"
+            className="progress-line pointer-events-none absolute inset-x-0 top-0 z-10 h-0.5 origin-left rounded-t-[6px] bg-brand"
+          />
+          <ol className="grid gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {approach.steps.map((step, index) => (
+              <li key={step.title} className="flex min-h-64 flex-col bg-background p-8 lg:min-h-80">
+                <span
+                  className="progress-step font-display text-5xl font-semibold tracking-tight text-subtle lg:text-6xl"
+                  style={{ "--step": index } as React.CSSProperties}
+                >
+                  0{index + 1}
+                </span>
+                <h3 className="mt-auto pt-12 font-display text-2xl font-semibold tracking-tight text-foreground">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-muted">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </Container>
     </section>
   );

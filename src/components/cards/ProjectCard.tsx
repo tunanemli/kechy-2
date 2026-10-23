@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import { ProjectVisual } from "@/components/cards/ProjectVisual";
 import { ArrowIcon } from "@/components/ui/Button";
 import type { Project } from "@/data/projects";
@@ -20,26 +21,29 @@ export function ProjectCard({ project, labels, featured = false, aspectClassName
 
   return (
     <article aria-labelledby={headingId} className={cn("group relative flex flex-col", className)}>
-      <div
-        className={cn(
-          "relative overflow-hidden rounded-[6px] border border-line bg-surface",
-          aspectClassName ?? (featured ? "aspect-[4/3] lg:aspect-[16/12]" : "aspect-[4/3]"),
-        )}
-      >
-        <div className="absolute inset-0 transition-transform duration-700 ease-out-soft motion-safe:group-hover:scale-[1.03]">
-          {project.image ? (
-            <Image
-              src={project.image.src}
-              alt={project.image.alt}
-              fill
-              sizes={featured ? "(min-width: 1024px) 58vw, 100vw" : "(min-width: 1024px) 38vw, 100vw"}
-              className="object-cover"
-            />
-          ) : (
-            <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
+      {/* Morphs into the case study's hero visual on navigation (same name there). */}
+      <ViewTransition name={`project-${project.slug}`} share="project-morph">
+        <div
+          className={cn(
+            "relative overflow-hidden rounded-[6px] border border-line bg-surface",
+            aspectClassName ?? (featured ? "aspect-[4/3] lg:aspect-[16/12]" : "aspect-[4/3]"),
           )}
+        >
+          <div className="absolute inset-0 transition-transform duration-700 ease-out-soft motion-safe:group-hover:scale-[1.03]">
+            {project.image ? (
+              <Image
+                src={project.image.src}
+                alt={project.image.alt}
+                fill
+                sizes={featured ? "(min-width: 1024px) 58vw, 100vw" : "(min-width: 1024px) 38vw, 100vw"}
+                className="object-cover"
+              />
+            ) : (
+              <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
+            )}
+          </div>
         </div>
-      </div>
+      </ViewTransition>
 
       <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs tracking-[0.16em] uppercase">
         {project.kind === "concept" ? (

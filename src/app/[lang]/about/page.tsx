@@ -42,11 +42,10 @@ export default async function AboutPage({ params }: LangParams) {
             eyebrow={aboutPage.teamEyebrow}
             title={aboutPage.teamTitle}
             description={aboutPage.teamDescription}
-            className="reveal"
           />
           <div className="mt-14 grid gap-px overflow-hidden rounded-[6px] border border-line bg-line md:grid-cols-2 lg:mt-20">
             {aboutPage.disciplines.map((discipline, index) => (
-              <article key={discipline.title} className="reveal flex flex-col bg-background p-8 lg:p-12">
+              <article key={discipline.title} className="flex flex-col bg-background p-8 lg:p-12">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">
                     {aboutPage.disciplineLabel} 0{index + 1}
@@ -74,13 +73,12 @@ export default async function AboutPage({ params }: LangParams) {
             id="principles-title"
             eyebrow={aboutPage.principlesEyebrow}
             title={aboutPage.principlesTitle}
-            className="reveal"
           />
           <ol className="mt-14 border-t border-line lg:mt-20">
             {aboutPage.principles.map((principle, index) => (
               <li
                 key={principle.title}
-                className="reveal grid gap-4 border-b border-line py-10 lg:grid-cols-12 lg:gap-10 lg:py-12"
+                className="grid gap-4 border-b border-line py-10 lg:grid-cols-12 lg:gap-10 lg:py-12"
               >
                 <span className="text-xs font-medium tracking-[0.22em] text-subtle lg:col-span-1 lg:pt-2">
                   0{index + 1}

@@ -25,22 +25,26 @@ export function Hero({ locale }: { locale: Locale }) {
 
           <h1
             id="hero-title"
-            className="animate-rise mt-8 font-display text-[clamp(4rem,17vw,5.5rem)] leading-[0.9] font-semibold tracking-[-0.045em] text-foreground sm:text-display"
-            style={delay(80)}
+            className="mt-8 font-display text-[clamp(4rem,17vw,5.5rem)] leading-[0.9] font-semibold tracking-[-0.045em] text-foreground sm:text-display"
           >
-            {hero.lines.map((line) => (
-              <span key={line} className="block">
-                {line}
+            {/* Each line rises from behind its own mask; the padding keeps descenders and diacritics visible. */}
+            {[...hero.lines, hero.highlight].map((line, index, all) => (
+              <span key={line} className="-my-[0.18em] block overflow-hidden py-[0.18em]">
+                <span
+                  className={`animate-line block ${index === all.length - 1 ? "text-brand" : ""}`}
+                  style={delay(120 + index * 110)}
+                >
+                  {line}
+                </span>
               </span>
             ))}
-            <span className="block text-brand">{hero.highlight}</span>
           </h1>
 
-          <p className="animate-rise mt-8 max-w-[34rem] text-lead text-muted" style={delay(160)}>
+          <p className="animate-rise mt-8 max-w-[34rem] text-lead text-muted" style={delay(520)}>
             {hero.lead}
           </p>
 
-          <div className="animate-rise mt-10 flex flex-col gap-3 sm:flex-row sm:items-center" style={delay(240)}>
+          <div className="animate-rise mt-10 flex flex-col gap-3 sm:flex-row sm:items-center" style={delay(620)}>
             <Button href={liveHref(locale, routes.contact)} size="lg" arrow>
               {hero.primary}
             </Button>
@@ -50,7 +54,7 @@ export function Hero({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <div className="animate-rise lg:col-span-5" style={delay(200)}>
+        <div className="lg:col-span-5">
           <HeroVisual locale={locale} />
         </div>
       </Container>

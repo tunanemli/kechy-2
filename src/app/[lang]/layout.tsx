@@ -55,7 +55,12 @@ export default async function RootLayout({ children, params }: LangParams & { ch
   const locale = await resolveLocale(params);
 
   return (
-    <html lang={locale} className={`${body.variable} ${heading.variable} h-full antialiased`}>
+    // data-scroll-behavior lets Next.js jump to the top on navigation despite the CSS smooth scrolling.
+    <html
+      lang={locale}
+      data-scroll-behavior="smooth"
+      className={`${body.variable} ${heading.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col">
         <Header locale={locale} />
         <main id="main" className="flex-1">
