@@ -220,7 +220,7 @@ const en = {
     address: "Istanbul · Working remotely worldwide",
     emailLabel: "Email",
     formTitle: "Send a message",
-    formIntro: "Fill in the fields to tell us about your project.",
+    formIntro: "Fill in the fields and press Send: your email app will open with your message ready to go.",
     form: {
       name: "Full name",
       namePlaceholder: "Your full name",
@@ -229,8 +229,9 @@ const en = {
       message: "Your message",
       messagePlaceholder: "Tell us briefly about your project…",
       submit: "Send",
-      sent: "Message received",
-      thanks: "Thank you. We'll get back to you as soon as possible.",
+      subject: "New message from the Kechy Creative website",
+      opened: "Your email app is opening. Remember to send the message from there.",
+      fallback: "If nothing opened, you can write to us directly:",
     },
   },
   notFound: {
@@ -462,7 +463,7 @@ const tr: Dictionary = {
     address: "İstanbul · Dünya genelinde uzaktan",
     emailLabel: "E-posta",
     formTitle: "Mesaj gönderin",
-    formIntro: "Projenizi anlatmak için alanları doldurun.",
+    formIntro: "Alanları doldurup Gönder'e bastığınızda e-posta uygulamanız, mesajınız hazır olarak açılır.",
     form: {
       name: "Ad soyad",
       namePlaceholder: "Adınız ve soyadınız",
@@ -471,8 +472,9 @@ const tr: Dictionary = {
       message: "Mesajınız",
       messagePlaceholder: "Projenizden kısaca bahsedin…",
       submit: "Gönder",
-      sent: "Mesajınız alındı",
-      thanks: "Teşekkürler. En kısa sürede size dönüş yapacağız.",
+      subject: "Kechy Creative web sitesinden yeni mesaj",
+      opened: "E-posta uygulamanız açılıyor. Mesajınızı oradan göndermeyi unutmayın.",
+      fallback: "Uygulama açılmadıysa bize doğrudan yazabilirsiniz:",
     },
   },
   notFound: {

@@ -10,24 +10,38 @@ type ContactFormLabels = {
   message: string;
   messagePlaceholder: string;
   submit: string;
-  sent: string;
-  thanks: string;
+  subject: string;
+  opened: string;
+  fallback: string;
 };
 
 const fieldClass =
   "w-full rounded-[6px] border border-line bg-background px-4 text-sm text-foreground placeholder:text-subtle transition-colors focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30";
 
-// TODO: no submission mechanism is connected yet; messages are not sent anywhere.
-export function ContactForm({ labels }: { labels: ContactFormLabels }) {
-  const [sent, setSent] = useState(false);
+/**
+ * Sends the message through the visitor's own email app: submitting opens a
+ * pre-filled email to `email`. Nothing is sent from the site itself.
+ */
+export function ContactForm({ email, labels }: { email: string; labels: ContactFormLabels }) {
+  const [opened, setOpened] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSent(true);
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const body = [
+      String(data.get("message") ?? "").trim(),
+      "",
+      "—",
+      `${labels.name}: ${String(data.get("name") ?? "").trim()}`,
+      `${labels.email}: ${String(data.get("email") ?? "").trim()}`,
+    ].join("\n");
+
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(labels.subject)}&body=${encodeURIComponent(body)}`;
+    setOpened(true);
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5" noValidate>
+    <form onSubmit={onSubmit} className="space-y-5">
       <div>
         <label htmlFor="contact-name" className="mb-2 block text-sm font-medium text-foreground">
           {labels.name}
@@ -71,12 +85,20 @@ export function ContactForm({ labels }: { labels: ContactFormLabels }) {
       </div>
       <button
         type="submit"
-        disabled={sent}
-        className="inline-flex h-12 w-full items-center justify-center rounded-full bg-brand px-8 text-sm font-medium text-background transition-colors hover:bg-brand-bright disabled:cursor-default disabled:opacity-80 sm:w-auto"
+        className="inline-flex h-12 w-full items-center justify-center rounded-full bg-brand px-8 text-sm font-medium text-background transition-colors hover:bg-brand-bright active:scale-[0.98] sm:w-auto"
       >
-        {sent ? labels.sent : labels.submit}
+        {labels.submit}
       </button>
-      {sent ? <p className="text-sm text-muted">{labels.thanks}</p> : null}
+      <div role="status" aria-live="polite">
+        {opened ? (
+          <p className="text-sm leading-relaxed text-muted">
+            {labels.opened} {labels.fallback}{" "}
+            <a href={`mailto:${email}`} className="text-foreground underline underline-offset-4 hover:text-brand">
+              {email}
+            </a>
+          </p>
+        ) : null}
+      </div>
     </form>
   );
 }
