@@ -7,7 +7,7 @@ import { resolveLocale, type LangParams } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
 import { routes } from "@/lib/routes";
 
-const contactEmail = "hello@kechy.studio";
+const contactEmail = "kechycreative@gmail.com";
 
 export async function generateMetadata({ params }: LangParams): Promise<Metadata> {
   const locale = await resolveLocale(params);
@@ -53,7 +53,7 @@ export default async function ContactPage({ params }: LangParams) {
             <h2 className="font-display text-h3 font-semibold text-foreground">{contactPage.formTitle}</h2>
             <p className="mt-2 text-sm text-muted">{contactPage.formIntro}</p>
             <div className="mt-8">
-              <ContactForm labels={contactPage.form} />
+              <ContactForm email={contactEmail} labels={contactPage.form} />
             </div>
           </div>
         </Container>
