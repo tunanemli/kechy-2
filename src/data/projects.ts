@@ -40,7 +40,7 @@ const projects: ProjectDefinition[] = [
     services: ["creative-social", "growth-performance"],
     content: {
       en: {
-        title: "Brand Campaign Concept",
+        title: "New Season Launch",
         category: "Creative & Social",
         summary:
           "A social-first launch campaign: one core idea carried through a key visual system, a content calendar and short-form video concepts.",
@@ -75,10 +75,10 @@ const projects: ProjectDefinition[] = [
         ],
       },
       tr: {
-        title: "Marka Kampanyası Konsepti",
+        title: "Yeni Sezon Lansmanı",
         category: "Kreatif & Sosyal Medya",
         summary:
-          "Tek bir ana fikirden doğan; ana görsel sistemi, içerik takvimi ve kısa video konseptleriyle hayata geçen, sosyal medya odaklı bir lansman kampanyası.",
+          "Tek bir fikirden yola çıkan, sosyal medya odaklı bir lansman: ana görsel, içerik takvimi ve kısa videolar.",
         visualLabel: "Kampanya sistemi illüstrasyonu: bir ana görsel ve bir dizi sosyal medya gönderisi formatı.",
         visualText: "Yeni sezon.",
         brief:
@@ -118,7 +118,7 @@ const projects: ProjectDefinition[] = [
     services: ["web-technology", "growth-performance"],
     content: {
       en: {
-        title: "E-commerce Experience Concept",
+        title: "Mobile-First Store",
         category: "Web & Technology",
         summary:
           "A storefront designed around fast product discovery, clear product pages and a shorter route to checkout.",
@@ -152,7 +152,7 @@ const projects: ProjectDefinition[] = [
         ],
       },
       tr: {
-        title: "E-ticaret Deneyimi Konsepti",
+        title: "Mobil Öncelikli Mağaza",
         category: "Web & Teknoloji",
         summary:
           "Hızlı ürün keşfi, anlaşılır ürün sayfaları ve daha kısa bir ödeme süreci üzerine kurulu bir online mağaza.",
@@ -194,7 +194,7 @@ const projects: ProjectDefinition[] = [
     services: ["web-technology", "growth-performance"],
     content: {
       en: {
-        title: "Digital Platform Concept",
+        title: "Operations in One Place",
         category: "Web & Technology · Growth",
         summary:
           "A custom web platform connected to existing tools through integrations, with a reporting view built in from day one.",
@@ -228,7 +228,7 @@ const projects: ProjectDefinition[] = [
         ],
       },
       tr: {
-        title: "Dijital Platform Konsepti",
+        title: "Tek Ekranda Operasyon",
         category: "Web & Teknoloji · Büyüme",
         summary:
           "Mevcut araçlara entegrasyonlarla bağlanan ve ilk günden bir raporlama ekranı içeren özel bir web platformu.",

@@ -45,12 +45,15 @@ export function ProjectCard({ project, labels, featured = false, aspectClassName
         </div>
       </ViewTransition>
 
-      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs tracking-[0.16em] uppercase">
+      <p className="mt-6 text-xs tracking-[0.16em] text-subtle uppercase">
         {project.kind === "concept" ? (
-          <span className="rounded-full border border-brand/60 px-2.5 py-1 font-medium text-brand">{labels.concept}</span>
+          <>
+            <span className="text-foreground/80">{labels.concept}</span>
+            <span aria-hidden="true"> · </span>
+          </>
         ) : null}
-        <span className="text-subtle">{project.category}</span>
-      </div>
+        {project.category}
+      </p>
 
       <h3 id={headingId} className="mt-4 font-display text-h3 font-semibold text-foreground">
         {/* The heading link covers the whole card so the card is a single click target. */}
