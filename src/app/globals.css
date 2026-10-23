@@ -223,6 +223,18 @@ body {
   }
 }
 
+/*
+ * Keeps the closing headline clear of the decorative circle, which is shown
+ * from lg and anchored to the viewport edge (right: -8vw; size: 40vw, max
+ * 680px). The width ends 2.5rem before the circle's left edge, measured from
+ * the container's content start.
+ */
+@media (min-width: 64rem) {
+  .cta-copy {
+    max-width: calc(108vw - min(40vw, 680px) - max(3rem, (100vw - 1320px) / 2 + 3rem) - 2.5rem);
+  }
+}
+
 /* Shared-element morph between a project card and its case study. */
 ::view-transition-group(.project-morph) {
   animation-duration: 550ms;

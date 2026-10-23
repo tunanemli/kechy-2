@@ -124,7 +124,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 <li key={pillar.id}>
                   <Link
                     href={pillar.href}
-                    className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-brand"
+                    className="-my-1.5 inline-flex items-center gap-2 py-1.5 text-foreground transition-colors hover:text-brand"
                   >
                     {pillar.title}
                     <ArrowIcon className="size-4" />

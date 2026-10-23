@@ -20,8 +20,8 @@ const variants: Record<ButtonVariant, string> = {
 };
 
 const sizes: Record<ButtonSize, string> = {
-  md: "h-11 px-5 text-sm",
-  lg: "h-14 px-7 text-[0.9375rem]",
+  md: "min-h-11 px-5 py-2.5 text-sm",
+  lg: "min-h-14 px-7 py-3 text-[0.9375rem]",
 };
 
 export function Button({
@@ -37,7 +37,7 @@ export function Button({
     <Link
       href={href}
       className={cn(
-        "group inline-flex shrink-0 items-center justify-center gap-2.5 rounded-full font-medium whitespace-nowrap transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.98]",
+        "group inline-flex max-w-full shrink-0 items-center justify-center gap-2.5 rounded-full text-center leading-snug font-medium transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.98] sm:whitespace-nowrap",
         variant !== "text" && sizes[size],
         variants[variant],
         className,

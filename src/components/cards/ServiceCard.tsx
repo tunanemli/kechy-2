@@ -35,7 +35,7 @@ export function ServiceCard({ pillar, exploreLabel, className }: ServiceCardProp
 
       <Link
         href={pillar.href}
-        className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
+        className="-my-2.5 mt-5.5 inline-flex items-center gap-2 py-2.5 text-sm font-medium text-foreground transition-colors hover:text-brand"
       >
         {exploreLabel}
         <ArrowIcon className="size-4" />

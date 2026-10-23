@@ -129,7 +129,7 @@ const en = {
     servicesInvolved: "Services involved",
     nextProject: "Next project",
     ctaTitleA: "Have a similar",
-    ctaTitleB: "challenge?",
+    ctaTitleB: "idea?",
   },
   servicesPage: {
     metaTitle: "Services",
@@ -371,7 +371,7 @@ const tr: Dictionary = {
     servicesInvolved: "İlgili hizmetler",
     nextProject: "Sonraki proje",
     ctaTitleA: "Benzer bir",
-    ctaTitleB: "ihtiyacınız mı var?",
+    ctaTitleB: "fikriniz mi var?",
   },
   servicesPage: {
     metaTitle: "Hizmetler",

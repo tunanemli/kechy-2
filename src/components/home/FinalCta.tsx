@@ -26,8 +26,8 @@ export function FinalCta({ locale, title, body, action }: FinalCtaProps) {
       />
 
       <Container className="relative py-28 lg:py-44">
-        <div>
-          <h2 id="cta-title" className="font-display text-display font-semibold text-foreground">
+        <div className="cta-copy">
+          <h2 id="cta-title" className="font-display text-display font-semibold text-balance text-foreground">
             {lineA}
             <br />
             {lineB}
