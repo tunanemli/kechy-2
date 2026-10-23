@@ -53,11 +53,10 @@ export function ServiceDetail({ locale, id }: { locale: Locale; id: string }) {
             id="offerings-title"
             eyebrow={serviceDetail.offeringsEyebrow}
             title={serviceDetail.offeringsTitle}
-            className="reveal"
           />
           <ul className="mt-14 grid gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-2 lg:mt-20">
             {page.offerings.map((offering, index) => (
-              <li key={offering.title} className="reveal flex flex-col bg-background p-8 lg:min-h-72 lg:p-10">
+              <li key={offering.title} className="flex flex-col bg-background p-8 lg:min-h-72 lg:p-10">
                 <span className="text-xs font-medium tracking-[0.2em] text-subtle">0{index + 1}</span>
                 <h3 className="mt-auto pt-12 font-display text-h3 font-semibold text-foreground">{offering.title}</h3>
                 <p className="mt-3 max-w-md text-base leading-relaxed text-muted">{offering.body}</p>
@@ -69,13 +68,13 @@ export function ServiceDetail({ locale, id }: { locale: Locale; id: string }) {
 
       <section aria-labelledby="fit-title" className="border-t border-line py-24 lg:py-32">
         <Container className="grid gap-14 lg:grid-cols-12 lg:gap-10">
-          <div className="reveal lg:col-span-6">
+          <div className="lg:col-span-6">
             <h2 id="fit-title" className="font-display text-h2 font-semibold text-balance text-foreground">
               {serviceDetail.fitTitle}
             </h2>
             <p className="mt-8 max-w-md text-lead text-muted">{page.connection}</p>
           </div>
-          <ul className="reveal border-t border-line lg:col-span-5 lg:col-start-8">
+          <ul className="border-t border-line lg:col-span-5 lg:col-start-8">
             {page.goodFit.map((item) => (
               <li key={item} className="flex gap-4 border-b border-line py-5 text-lg text-foreground/90">
                 <span className="mt-2.5 size-2 shrink-0 rounded-full bg-brand" aria-hidden="true" />
@@ -98,7 +97,6 @@ export function ServiceDetail({ locale, id }: { locale: Locale; id: string }) {
                   {common.allWork}
                 </Button>
               }
-              className="reveal"
             />
             <ProjectCard
               project={project}

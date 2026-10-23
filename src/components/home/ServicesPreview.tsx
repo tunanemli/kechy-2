@@ -21,7 +21,6 @@ export function ServicesPreview({ locale }: { locale: Locale }) {
             </>
           }
           description={servicesPreview.description}
-          className="reveal"
         />
 
         <div className="mt-16 grid border-t border-line lg:mt-24 lg:grid-cols-3">
@@ -30,7 +29,7 @@ export function ServicesPreview({ locale }: { locale: Locale }) {
               key={pillar.id}
               pillar={pillar}
               exploreLabel={servicesPreview.explore(pillar.title)}
-              className="reveal border-b border-line lg:border-b-0 lg:not-last:border-r lg:first:pl-0 lg:last:pr-0"
+              className="border-b border-line lg:border-b-0 lg:not-last:border-r lg:first:pl-0 lg:last:pr-0"
             />
           ))}
         </div>

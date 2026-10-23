@@ -38,7 +38,7 @@ export default async function ServicesPage({ params }: LangParams) {
             {getServicePillars(locale).map((pillar) => (
               <li
                 key={pillar.id}
-                className="reveal group relative grid gap-8 border-b border-line py-14 lg:grid-cols-12 lg:gap-10 lg:py-20"
+                className="group relative grid gap-8 border-b border-line py-14 lg:grid-cols-12 lg:gap-10 lg:py-20"
               >
                 <span className="text-xs font-medium tracking-[0.22em] text-subtle lg:col-span-1 lg:pt-4">
                   {pillar.index}
@@ -84,11 +84,10 @@ export default async function ServicesPage({ params }: LangParams) {
             id="why-title"
             eyebrow={servicesPage.whyEyebrow}
             title={servicesPage.whyTitle}
-            className="reveal"
           />
           <ul className="mt-14 grid gap-12 border-t border-line pt-12 md:grid-cols-3 md:gap-10 lg:mt-20">
             {servicesPage.reasons.map((reason) => (
-              <li key={reason.title} className="reveal">
+              <li key={reason.title}>
                 <h3 className="font-display text-h3 font-semibold text-foreground">{reason.title}</h3>
                 <p className="mt-4 max-w-sm text-base leading-relaxed text-muted">{reason.body}</p>
               </li>

@@ -20,7 +20,7 @@ export function PageHero({ eyebrow, title, lead, back, children, className }: Pa
         {back ? (
           <Link
             href={back.href}
-            className="animate-rise mb-10 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+            className="animate-rise -my-2.5 mb-7.5 inline-flex items-center gap-2 py-2.5 text-sm text-muted transition-colors hover:text-foreground"
           >
             <span aria-hidden="true">←</span> {back.label}
           </Link>

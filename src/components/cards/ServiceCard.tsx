@@ -35,7 +35,7 @@ export function ServiceCard({ pillar, exploreLabel, className }: ServiceCardProp
 
       <Link
         href={pillar.href}
-        className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
+        className="-my-2.5 mt-5.5 inline-flex items-center gap-2 py-2.5 text-sm font-medium text-foreground transition-colors hover:text-brand"
       >
         {exploreLabel}
         <ArrowIcon className="size-4" />
@@ -44,15 +44,36 @@ export function ServiceCard({ pillar, exploreLabel, className }: ServiceCardProp
   );
 }
 
-/** Small brand shapes taken from the logo's geometry: the dot, the stem, the curve. */
+/**
+ * Small brand shapes taken from the logo's geometry: the dot, the stem, the
+ * curve. On hover or focus they trace their outline and fill in (see the
+ * glyph keyframes in globals.css); `pathLength={1}` normalizes the dash length.
+ */
 function ServiceGlyph({ glyph }: { glyph: ServicePillar["glyph"] }) {
-  const base = "transition-transform duration-500 ease-out-soft motion-safe:group-hover:-translate-y-1";
-  if (glyph === "circle") return <span aria-hidden="true" className={cn(base, "size-7 rounded-full bg-brand")} />;
-  if (glyph === "block") return <span aria-hidden="true" className={cn(base, "h-7 w-4 rounded-[3px] bg-brand")} />;
+  const filled = "glyph-fill fill-brand stroke-brand";
+  if (glyph === "circle") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 28 28" className="size-7 overflow-visible">
+        <circle cx="14" cy="14" r="13" pathLength={1} strokeWidth="2" strokeDasharray="1" className={filled} />
+      </svg>
+    );
+  }
+  if (glyph === "block") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 16 28" className="h-7 w-4 overflow-visible">
+        <rect x="1" y="1" width="14" height="26" rx="2.5" pathLength={1} strokeWidth="2" strokeDasharray="1" className={filled} />
+      </svg>
+    );
+  }
   return (
-    <span
-      aria-hidden="true"
-      className={cn(base, "size-7 rounded-tr-full border-t-[7px] border-r-[7px] border-brand")}
-    />
+    <svg aria-hidden="true" viewBox="0 0 28 28" className="size-7 overflow-visible">
+      <path
+        d="M0 3.5A24.5 24.5 0 0 1 24.5 28"
+        pathLength={1}
+        strokeWidth="7"
+        strokeDasharray="1"
+        className="glyph-trace fill-none stroke-brand"
+      />
+    </svg>
   );
 }

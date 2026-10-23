@@ -31,7 +31,6 @@ export function SelectedWork({ locale }: { locale: Locale }) {
               {selectedWork.viewAll}
             </Button>
           }
-          className="reveal"
         />
 
         <div className="mt-16 grid gap-x-10 gap-y-20 lg:mt-24 lg:grid-cols-12 lg:gap-y-28">
@@ -45,7 +44,7 @@ export function SelectedWork({ locale }: { locale: Locale }) {
             />
           ))}
 
-          <div className="reveal flex flex-col items-start justify-end border-t border-line pt-8 lg:col-span-4 lg:col-start-9">
+          <div className="flex flex-col items-start justify-end border-t border-line pt-8 lg:col-span-4 lg:col-start-9">
             <p className="font-display text-h3 font-semibold text-foreground">{selectedWork.pitchTitle}</p>
             <p className="mt-4 text-base leading-relaxed text-muted">{selectedWork.pitchBody}</p>
             <Button href={liveHref(locale, routes.contact)} variant="secondary" arrow className="mt-8">

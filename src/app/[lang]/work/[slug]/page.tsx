@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { ProjectVisual } from "@/components/cards/ProjectVisual";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Container } from "@/components/layout/Container";
@@ -33,11 +34,7 @@ async function resolveProject(params: Props["params"]) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, project, slug } = await resolveProject(params);
-  const { caseStudy } = getDictionary(locale);
-  return caseStudyMetadata(locale, slug, {
-    title: project.kind === "concept" ? `${project.title} ${caseStudy.conceptSuffix}` : project.title,
-    description: project.summary,
-  });
+  return caseStudyMetadata(locale, slug, { title: project.title, description: project.summary });
 }
 
 export default async function CaseStudyPage({ params }: Props) {
@@ -45,7 +42,9 @@ export default async function CaseStudyPage({ params }: Props) {
   const { caseStudy, common } = getDictionary(locale);
 
   const projects = getProjects(locale);
-  const next = projects[(projects.findIndex((candidate) => candidate.slug === project.slug) + 1) % projects.length];
+  const index = projects.findIndex((candidate) => candidate.slug === project.slug);
+  const next = projects[(index + 1) % projects.length];
+  const position = `${String(index + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`;
   const services = project.services
     .map((id) => getServicePillar(locale, id))
     .filter((pillar) => pillar !== undefined);
@@ -53,36 +52,43 @@ export default async function CaseStudyPage({ params }: Props) {
   return (
     <>
       <PageHero
-        eyebrow={project.category}
+        eyebrow={position}
         title={project.title}
         lead={project.summary}
         back={{ label: common.allWork, href: liveHref(locale, routes.work) }}
       >
-        {project.kind === "concept" ? (
-          <p className="inline-flex max-w-2xl items-start gap-3 rounded-[6px] border border-brand/40 px-4 py-3 text-sm leading-relaxed text-muted">
-            <span className="mt-0.5 shrink-0 rounded-full border border-brand/60 px-2 py-0.5 text-[0.6875rem] font-medium tracking-[0.16em] text-brand uppercase">
-              {common.concept}
-            </span>
-            {caseStudy.conceptNote}
-          </p>
-        ) : null}
+        <dl className="grid max-w-3xl gap-6 border-t border-line pt-6 sm:grid-cols-2">
+          {project.kind === "concept" ? (
+            <div>
+              <dt className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">{caseStudy.typeLabel}</dt>
+              <dd className="mt-2 text-foreground">{caseStudy.typeConcept}</dd>
+            </div>
+          ) : null}
+          <div>
+            <dt className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">{caseStudy.disciplinesLabel}</dt>
+            <dd className="mt-2 text-foreground">{services.map((pillar) => pillar.title).join(", ")}</dd>
+          </div>
+        </dl>
       </PageHero>
 
       <Container className="pt-12 lg:pt-16">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border border-line bg-surface md:aspect-[21/9]">
-          {project.image ? (
-            <Image
-              src={project.image.src}
-              alt={project.image.alt}
-              fill
-              preload
-              sizes="(min-width: 1320px) 1224px, 100vw"
-              className="object-cover"
-            />
-          ) : (
-            <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
-          )}
-        </div>
+        {/* Same name as the project card's visual, so the card morphs into this on navigation. */}
+        <ViewTransition name={`project-${project.slug}`} share="project-morph">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border border-line bg-surface md:aspect-[21/9]">
+            {project.image ? (
+              <Image
+                src={project.image.src}
+                alt={project.image.alt}
+                fill
+                preload
+                sizes="(min-width: 1320px) 1224px, 100vw"
+                className="object-cover"
+              />
+            ) : (
+              <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
+            )}
+          </div>
+        </ViewTransition>
       </Container>
 
       <CaseSection id="brief" label={caseStudy.brief}>
@@ -92,7 +98,7 @@ export default async function CaseStudyPage({ params }: Props) {
       <CaseSection id="approach" label={caseStudy.approach}>
         <ol className="grid gap-px overflow-hidden rounded-[6px] border border-line bg-line sm:grid-cols-2">
           {project.approach.map((step, stepIndex) => (
-            <li key={step.title} className="reveal bg-background p-7 lg:p-8">
+            <li key={step.title} className="bg-background p-7 lg:p-8">
               <span className="text-xs font-medium tracking-[0.2em] text-subtle">0{stepIndex + 1}</span>
               <h3 className="mt-6 font-display text-xl font-semibold tracking-tight text-foreground">{step.title}</h3>
               <p className="mt-3 text-base leading-relaxed text-muted">{step.body}</p>
@@ -118,7 +124,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 <li key={pillar.id}>
                   <Link
                     href={pillar.href}
-                    className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-brand"
+                    className="-my-1.5 inline-flex items-center gap-2 py-1.5 text-foreground transition-colors hover:text-brand"
                   >
                     {pillar.title}
                     <ArrowIcon className="size-4" />
@@ -159,7 +165,7 @@ function CaseSection({ id, label, children }: { id: string; label: string; child
         >
           {label}
         </h2>
-        <div className="reveal lg:col-span-8 lg:col-start-5">{children}</div>
+        <div className="lg:col-span-8 lg:col-start-5">{children}</div>
       </Container>
     </section>
   );

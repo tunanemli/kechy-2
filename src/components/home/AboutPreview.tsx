@@ -10,7 +10,7 @@ export function AboutPreview({ locale }: { locale: Locale }) {
   return (
     <section id="about" aria-labelledby="about-title" className="scroll-mt-18 border-t border-line py-24 lg:py-36">
       <Container className="grid gap-16 lg:grid-cols-12 lg:gap-10">
-        <div className="reveal lg:col-span-6">
+        <div className="lg:col-span-6">
           <p className="flex items-center gap-3 text-xs font-medium tracking-[0.22em] text-muted uppercase">
             <span className="size-1.5 rounded-full bg-brand" aria-hidden="true" />
             {aboutPreview.eyebrow}
@@ -22,7 +22,7 @@ export function AboutPreview({ locale }: { locale: Locale }) {
           </h2>
         </div>
 
-        <div className="reveal lg:col-span-5 lg:col-start-8">
+        <div className="lg:col-span-5 lg:col-start-8">
           <p className="text-lead text-foreground/90">{aboutPreview.body}</p>
 
           <div className="mt-12 grid grid-cols-[auto_1fr] gap-x-6">

@@ -2,6 +2,8 @@ import { Logo } from "@/components/layout/Logo";
 import { getDictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/routing";
 
+const delay = (ms: number) => ({ "--delay": `${ms}ms` }) as React.CSSProperties;
+
 /**
  * Hero brand composition: the creative side (the brand tile with the supplied
  * logo) layered with the technical side (a code window). Decorative only; the
@@ -13,7 +15,10 @@ export function HeroVisual({ locale }: { locale: Locale }) {
   return (
     <div aria-hidden="true" className="relative mx-auto aspect-[5/6] w-full max-w-[520px] sm:aspect-[6/5] lg:aspect-[5/6]">
       {/* Creative: brand tile */}
-      <div className="absolute top-0 right-0 flex h-[68%] w-[82%] flex-col justify-between overflow-hidden rounded-[6px] bg-brand p-[6%]">
+      <div
+        className="animate-rise absolute top-0 right-0 flex h-[68%] w-[82%] flex-col justify-between overflow-hidden rounded-[6px] bg-brand p-[6%]"
+        style={delay(260)}
+      >
         <div className="flex items-center justify-between text-[0.6875rem] font-medium tracking-[0.2em] text-background uppercase">
           <span>{visual.creative}</span>
           <span>01</span>
@@ -28,7 +33,10 @@ export function HeroVisual({ locale }: { locale: Locale }) {
       </div>
 
       {/* Technology: code window */}
-      <div className="absolute bottom-0 left-0 w-[74%] overflow-hidden rounded-[6px] border border-line bg-surface shadow-[0_30px_60px_-20px_rgba(0,0,0,0.9)]">
+      <div
+        className="animate-rise absolute bottom-0 left-0 w-[74%] overflow-hidden rounded-[6px] border border-line bg-surface shadow-[0_30px_60px_-20px_rgba(0,0,0,0.9)]"
+        style={delay(440)}
+      >
         <div className="flex items-center justify-between border-b border-line px-4 py-3">
           <div className="flex gap-1.5">
             <span className="size-2 rounded-full bg-line" />
@@ -54,8 +62,11 @@ export function HeroVisual({ locale }: { locale: Locale }) {
         </pre>
       </div>
 
-      {/* The dot from the logo, joining the two halves */}
-      <span className="absolute top-[56%] left-[8%] aspect-square w-[14%] rounded-full border-[6px] border-background bg-brand" />
+      {/* The dot from the logo lands last, joining the two halves */}
+      <span
+        className="animate-dot-land absolute top-[56%] left-[8%] aspect-square w-[14%] rounded-full border-[6px] border-background bg-brand"
+        style={delay(780)}
+      />
     </div>
   );
 }

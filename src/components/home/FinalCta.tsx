@@ -17,22 +17,23 @@ export function FinalCta({ locale, title, body, action }: FinalCtaProps) {
   const [lineA, lineB] = title ?? [cta.titleA, cta.titleB];
 
   return (
-    <section aria-labelledby="cta-title" className="relative overflow-hidden border-t border-line">
-      {/* The logo's dot, scaled up as the closing brand mark */}
+    <section aria-labelledby="cta-title" className="relative overflow-clip border-t border-line">
+      {/* The logo's dot, growing into the closing brand mark as the section scrolls in.
+          Centered with `top` rather than a translate: scroll timelines measure the untransformed box. */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 right-[-8vw] hidden size-[40vw] max-h-[680px] max-w-[680px] -translate-y-1/2 rounded-full bg-brand lg:block"
+        className="scroll-grow pointer-events-none absolute top-[calc(50%-min(20vw,340px))] right-[-8vw] hidden size-[40vw] max-h-[680px] max-w-[680px] rounded-full bg-brand lg:block"
       />
 
       <Container className="relative py-28 lg:py-44">
-        <div className="reveal">
-          <h2 id="cta-title" className="font-display text-display font-semibold text-foreground">
+        <div className="cta-copy">
+          <h2 id="cta-title" className="font-display text-display font-semibold text-balance text-foreground">
             {lineA}
             <br />
             {lineB}
           </h2>
         </div>
-        <div className="reveal mt-10 flex max-w-xl flex-col items-start gap-10 lg:mt-14">
+        <div className="mt-10 flex max-w-xl flex-col items-start gap-10 lg:mt-14">
           <p className="text-lead text-muted">{body ?? cta.body}</p>
           <Button href={liveHref(locale, routes.contact)} size="lg" arrow>
             {action ?? cta.action}

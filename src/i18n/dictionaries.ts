@@ -63,9 +63,8 @@ const en = {
   },
   selectedWork: {
     eyebrow: "Selected work",
-    title: "Concepts that show how we think.",
-    description:
-      "Our first client case studies are in preparation. Until they are published, these clearly labeled concept projects show how we approach campaigns, digital products and platforms.",
+    title: "Three briefs, three answers.",
+    description: "Concept work built on briefs we wrote ourselves. Client projects will follow here soon.",
     viewAll: "View all work",
     pitchTitle: "Your project could be our first featured case study.",
     pitchBody: "Tell us what you're working on and we'll show you how we would approach it.",
@@ -112,7 +111,7 @@ const en = {
       "Concept projects from Kechy Creative showing how we approach brand campaigns, e-commerce experiences and digital platforms.",
     eyebrow: "Work",
     title: "Selected work",
-    lead: "Our first client case studies are in preparation. Until they are published, these concept projects show how we approach campaigns, digital products and platforms. Each one is clearly marked as a concept.",
+    lead: "Concept work built on briefs we wrote ourselves: a campaign, a store and a platform. Client projects will follow here soon.",
     listHeading: "Projects",
     ctaTitleA: "Your project",
     ctaTitleB: "could be next.",
@@ -121,16 +120,16 @@ const en = {
     ctaAction: "Start a project",
   },
   caseStudy: {
-    conceptSuffix: "(concept)",
-    conceptNote:
-      "This is a self-initiated concept that shows how we would approach a brief like this. It is not client work.",
+    typeLabel: "Project type",
+    typeConcept: "Concept work, our own brief",
+    disciplinesLabel: "Disciplines",
     brief: "The brief",
     approach: "Our approach",
     deliverables: "Deliverables",
     servicesInvolved: "Services involved",
     nextProject: "Next project",
     ctaTitleA: "Have a similar",
-    ctaTitleB: "challenge?",
+    ctaTitleB: "idea?",
   },
   servicesPage: {
     metaTitle: "Services",
@@ -306,9 +305,8 @@ const tr: Dictionary = {
   },
   selectedWork: {
     eyebrow: "Seçili işler",
-    title: "Nasıl düşündüğümüzü gösteren konseptler.",
-    description:
-      "İlk müşteri vaka çalışmalarımız hazırlanıyor. Yayınlanana kadar kampanyalara, dijital ürünlere ve platformlara nasıl yaklaştığımızı, açıkça konsept olarak işaretlediğimiz bu projelerle gösteriyoruz.",
+    title: "Üç brif, üç farklı çözüm.",
+    description: "Kendi yazdığımız briflerle geliştirdiğimiz konsept çalışmalar. Müşteri projelerimizi yakında burada paylaşacağız.",
     viewAll: "Tüm işleri görün",
     pitchTitle: "İlk vaka çalışmamız sizin projeniz olabilir.",
     pitchBody: "Üzerinde çalıştığınız işi anlatın, nasıl yaklaşacağımızı birlikte konuşalım.",
@@ -355,7 +353,7 @@ const tr: Dictionary = {
       "Kechy Creative'in marka kampanyalarına, e-ticaret deneyimlerine ve dijital platformlara yaklaşımını gösteren konsept projeler.",
     eyebrow: "İşler",
     title: "Seçili işler",
-    lead: "İlk müşteri vaka çalışmalarımız hazırlanıyor. Yayınlanana kadar kampanyalara, dijital ürünlere ve platformlara nasıl yaklaştığımızı bu konsept projelerle gösteriyoruz. Her biri açıkça konsept olarak işaretlenmiştir.",
+    lead: "Kendi yazdığımız briflerle geliştirdiğimiz konsept çalışmalar: bir kampanya, bir mağaza ve bir platform. Müşteri projelerimizi yakında burada paylaşacağız.",
     listHeading: "Projeler",
     ctaTitleA: "Sıradaki proje",
     ctaTitleB: "sizinki olabilir.",
@@ -364,16 +362,16 @@ const tr: Dictionary = {
     ctaAction: "Proje başlatın",
   },
   caseStudy: {
-    conceptSuffix: "(konsept)",
-    conceptNote:
-      "Bu, böyle bir brife nasıl yaklaşacağımızı göstermek için hazırladığımız bir konsept çalışmadır. Müşteri işi değildir.",
+    typeLabel: "Proje türü",
+    typeConcept: "Konsept çalışma, kendi brifimiz",
+    disciplinesLabel: "Disiplinler",
     brief: "Brif",
     approach: "Yaklaşımımız",
     deliverables: "Çıktılar",
     servicesInvolved: "İlgili hizmetler",
     nextProject: "Sonraki proje",
     ctaTitleA: "Benzer bir",
-    ctaTitleB: "ihtiyacınız mı var?",
+    ctaTitleB: "fikriniz mi var?",
   },
   servicesPage: {
     metaTitle: "Hizmetler",
