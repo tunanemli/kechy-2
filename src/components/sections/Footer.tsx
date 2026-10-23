@@ -33,8 +33,8 @@ export function Footer() {
             <p className="mt-4 max-w-sm text-sm leading-relaxed">
               İstanbul · Dünya genelinde uzaktan
               <br />
-              <a href="mailto:hello@kechy.studio" className="hover:text-white">
-                hello@kechy.studio
+              <a href="mailto:kechycreative@gmail.com" className="hover:text-white">
+                kechycreative@gmail.com
               </a>
             </p>
             <Link

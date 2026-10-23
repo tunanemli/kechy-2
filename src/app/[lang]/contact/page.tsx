@@ -7,7 +7,7 @@ import { resolveLocale, type LangParams } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
 import { routes } from "@/lib/routes";
 
-const contactEmail = "hello@kechy.studio";
+const contactEmail = "kechycreative@gmail.com";
 
 export async function generateMetadata({ params }: LangParams): Promise<Metadata> {
   const locale = await resolveLocale(params);
