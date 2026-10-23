@@ -20,7 +20,7 @@ type PageCopy = { title: string | { absolute: string }; description: string };
  */
 function localizedMetadata(locale: Locale, urls: Record<Locale, string>, copy: PageCopy): Metadata {
   const { meta } = getDictionary(locale);
-  const ogTitle = typeof copy.title === "string" ? `${copy.title} — ${site.name}` : copy.title.absolute;
+  const ogTitle = typeof copy.title === "string" ? `${copy.title} | ${site.name}` : copy.title.absolute;
   const languages = Object.fromEntries(locales.map((code) => [code, urls[code]]));
 
   return {

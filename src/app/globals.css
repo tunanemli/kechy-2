@@ -174,7 +174,7 @@ body {
   }
 
   .animate-line {
-    animation: line-up 1s var(--ease-out-soft) both;
+    animation: line-up 0.85s var(--ease-out-soft) both;
     animation-delay: var(--delay, 0ms);
   }
 

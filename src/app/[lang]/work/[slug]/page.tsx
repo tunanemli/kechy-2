@@ -7,6 +7,7 @@ import { ProjectVisual } from "@/components/cards/ProjectVisual";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Container } from "@/components/layout/Container";
 import { ArrowIcon } from "@/components/ui/Button";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { getProject, getProjects } from "@/data/projects";
 import { getServicePillar } from "@/data/service-pillars";
@@ -15,6 +16,7 @@ import { caseStudySlugs } from "@/i18n/routing";
 import { resolveLocale } from "@/i18n/server";
 import { caseStudyMetadata } from "@/lib/metadata";
 import { isCaseStudySlug, liveHref, routes } from "@/lib/routes";
+import { breadcrumbs, caseStudySchema } from "@/lib/structured-data";
 
 type Props = { params: Promise<{ lang: string; slug: string }> };
 
@@ -39,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CaseStudyPage({ params }: Props) {
   const { locale, project } = await resolveProject(params);
-  const { caseStudy, common } = getDictionary(locale);
+  const { caseStudy, common, nav } = getDictionary(locale);
 
   const projects = getProjects(locale);
   const index = projects.findIndex((candidate) => candidate.slug === project.slug);
@@ -51,6 +53,15 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbs(locale, [
+            { name: nav.work, path: liveHref(locale, routes.work) },
+            { name: project.title, path: project.href },
+          ]),
+          caseStudySchema(locale, project),
+        ]}
+      />
       <PageHero
         eyebrow={position}
         title={project.title}

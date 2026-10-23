@@ -32,7 +32,7 @@ export function Hero({ locale }: { locale: Locale }) {
               <span key={line} className="-my-[0.18em] block overflow-hidden py-[0.18em]">
                 <span
                   className={`animate-line block ${index === all.length - 1 ? "text-brand" : ""}`}
-                  style={delay(120 + index * 110)}
+                  style={delay(index * 100)}
                 >
                   {line}
                 </span>
@@ -40,11 +40,11 @@ export function Hero({ locale }: { locale: Locale }) {
             ))}
           </h1>
 
-          <p className="animate-rise mt-8 max-w-[34rem] text-lead text-muted" style={delay(520)}>
+          <p className="animate-rise mt-8 max-w-[34rem] text-lead text-muted" style={delay(380)}>
             {hero.lead}
           </p>
 
-          <div className="animate-rise mt-10 flex flex-col gap-3 sm:flex-row sm:items-center" style={delay(620)}>
+          <div className="animate-rise mt-10 flex flex-col gap-3 sm:flex-row sm:items-center" style={delay(480)}>
             <Button href={liveHref(locale, routes.contact)} size="lg" arrow>
               {hero.primary}
             </Button>
