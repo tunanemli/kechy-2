@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { ProjectCard } from "@/components/cards/ProjectCard";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Container } from "@/components/layout/Container";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { getProjects } from "@/data/projects";
 import { getDictionary } from "@/i18n/dictionaries";
 import { resolveLocale, type LangParams } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
-import { routes } from "@/lib/routes";
+import { liveHref, routes } from "@/lib/routes";
+import { breadcrumbs } from "@/lib/structured-data";
 
 export async function generateMetadata({ params }: LangParams): Promise<Metadata> {
   const locale = await resolveLocale(params);
@@ -17,10 +19,11 @@ export async function generateMetadata({ params }: LangParams): Promise<Metadata
 
 export default async function WorkPage({ params }: LangParams) {
   const locale = await resolveLocale(params);
-  const { workPage, common } = getDictionary(locale);
+  const { workPage, common, nav } = getDictionary(locale);
 
   return (
     <>
+      <JsonLd data={breadcrumbs(locale, [{ name: nav.work, path: liveHref(locale, routes.work) }])} />
       <PageHero eyebrow={workPage.eyebrow} title={workPage.title} lead={workPage.lead} />
 
       <section aria-labelledby="projects-title" className="py-20 lg:py-28">

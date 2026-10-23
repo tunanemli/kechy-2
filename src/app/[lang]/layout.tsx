@@ -2,10 +2,12 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getDictionary } from "@/i18n/dictionaries";
 import { locales } from "@/i18n/routing";
 import { resolveLocale, type LangParams } from "@/i18n/server";
 import { site } from "@/lib/site";
+import { siteGraph } from "@/lib/structured-data";
 import "../globals.css";
 
 const body = DM_Sans({
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: LangParams): Promise<Metadata
     metadataBase: new URL(site.url),
     title: {
       default: `${site.name} — ${meta.tagline}`,
-      template: `%s — ${site.name}`,
+      template: `%s | ${site.name}`,
     },
     description: meta.description,
     applicationName: site.name,
@@ -62,6 +64,7 @@ export default async function RootLayout({ children, params }: LangParams & { ch
       className={`${body.variable} ${heading.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <JsonLd data={siteGraph(locale)} />
         <Header locale={locale} />
         <main id="main" className="flex-1">
           {children}

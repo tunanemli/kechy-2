@@ -6,6 +6,7 @@ import { Approach } from "@/components/home/Approach";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Container } from "@/components/layout/Container";
 import { ArrowIcon, Button } from "@/components/ui/Button";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getProject } from "@/data/projects";
@@ -14,6 +15,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 import { liveHref, routes } from "@/lib/routes";
+import { breadcrumbs, faqSchema, serviceSchema } from "@/lib/structured-data";
 
 export function serviceMetadata(locale: Locale, id: string): Metadata {
   const pillar = getServicePillar(locale, id);
@@ -29,13 +31,23 @@ export function ServiceDetail({ locale, id }: { locale: Locale; id: string }) {
   const pillar = getServicePillar(locale, id);
   if (!pillar) notFound();
 
-  const { common, serviceDetail } = getDictionary(locale);
+  const { common, serviceDetail, nav } = getDictionary(locale);
   const { page } = pillar;
   const project = getProject(locale, pillar.relatedProjectSlug);
   const others = getServicePillars(locale).filter((other) => other.id !== pillar.id);
 
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbs(locale, [
+            { name: nav.services, path: liveHref(locale, routes.services) },
+            { name: pillar.title, path: pillar.href },
+          ]),
+          serviceSchema(locale, pillar),
+          faqSchema(page.faq),
+        ]}
+      />
       <PageHero
         eyebrow={`${common.servicePrefix} ${pillar.index} · ${pillar.title}`}
         title={page.headline}
@@ -107,6 +119,35 @@ export function ServiceDetail({ locale, id }: { locale: Locale; id: string }) {
           </Container>
         </section>
       ) : null}
+
+      <section aria-labelledby="faq-title" className="border-t border-line py-24 lg:py-32">
+        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <p className="flex items-center gap-3 text-xs font-medium tracking-[0.22em] text-muted uppercase">
+              <span className="size-1.5 rounded-full bg-brand" aria-hidden="true" />
+              {serviceDetail.faqEyebrow}
+            </p>
+            <h2 id="faq-title" className="mt-6 font-display text-h2 font-semibold text-balance text-foreground">
+              {serviceDetail.faqTitle}
+            </h2>
+          </div>
+          {/* Native disclosure: works without JavaScript and with the keyboard. */}
+          <div className="border-t border-line lg:col-span-7">
+            {page.faq.map((item) => (
+              <details key={item.question} className="group border-b border-line">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-foreground transition-colors hover:text-brand [&::-webkit-details-marker]:hidden">
+                  <h3 className="font-display text-xl font-semibold tracking-tight">{item.question}</h3>
+                  <span aria-hidden="true" className="relative size-4 shrink-0 text-brand">
+                    <span className="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 bg-current" />
+                    <span className="absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2 bg-current transition-transform duration-300 group-open:scale-y-0" />
+                  </span>
+                </summary>
+                <p className="max-w-2xl pr-10 pb-7 text-base leading-relaxed text-muted">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <Approach locale={locale} variant="service" />
 

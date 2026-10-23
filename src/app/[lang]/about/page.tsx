@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Approach } from "@/components/home/Approach";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Container } from "@/components/layout/Container";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getDictionary } from "@/i18n/dictionaries";
 import { resolveLocale, type LangParams } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
-import { routes } from "@/lib/routes";
+import { liveHref, routes } from "@/lib/routes";
+import { breadcrumbs } from "@/lib/structured-data";
 
 const disciplineShapes = ["rounded-full", "rounded-[3px]"];
 
@@ -19,10 +21,11 @@ export async function generateMetadata({ params }: LangParams): Promise<Metadata
 
 export default async function AboutPage({ params }: LangParams) {
   const locale = await resolveLocale(params);
-  const { aboutPage, aboutPreview } = getDictionary(locale);
+  const { aboutPage, aboutPreview, nav } = getDictionary(locale);
 
   return (
     <>
+      <JsonLd data={breadcrumbs(locale, [{ name: nav.about, path: liveHref(locale, routes.about) }])} />
       <PageHero
         eyebrow={aboutPreview.eyebrow}
         title={

@@ -5,10 +5,10 @@ const en = {
     ogLocale: "en_US",
     tagline: "Creative × Technology Studio",
     description:
-      "Kechy Creative is a creative and technology studio. We bring social media marketing and software development together to build brands that stand out and businesses that move forward.",
-    homeTitle: "Kechy Creative — We make brands grow",
+      "Istanbul-based creative and technology studio. Social media marketing, websites, e-commerce and digital advertising that help brands stand out and grow.",
+    homeTitle: "Kechy Creative | Social Media & Web Studio, Istanbul",
     homeDescription:
-      "A creative and technology studio combining social media marketing and web development. Campaigns, websites and custom software for brands that want to grow.",
+      "Creative and technology studio in Istanbul: social media management, corporate websites, e-commerce and digital advertising to help your brand grow.",
   },
   common: {
     skipToContent: "Skip to content",
@@ -106,9 +106,9 @@ const en = {
     action: "Start a conversation",
   },
   workPage: {
-    metaTitle: "Work",
+    metaTitle: "Our Work",
     metaDescription:
-      "Concept projects from Kechy Creative showing how we approach brand campaigns, e-commerce experiences and digital platforms.",
+      "Concept work from Kechy Creative: a social media launch campaign, a mobile-first online store and a custom web platform, from brief to deliverables.",
     eyebrow: "Work",
     title: "Selected work",
     lead: "Concept work built on briefs we wrote ourselves: a campaign, a store and a platform. Client projects will follow here soon.",
@@ -132,9 +132,9 @@ const en = {
     ctaTitleB: "idea?",
   },
   servicesPage: {
-    metaTitle: "Services",
+    metaTitle: "Social Media, Web & Advertising Services",
     metaDescription:
-      "Social media and creative, web development and technology, and growth and performance marketing from one focused team.",
+      "Social media management, website and e-commerce development, and digital advertising from one focused team: strategy, content and code in one place.",
     eyebrow: "Services",
     title: "Creative ideas, solid engineering.",
     lead: "Social media marketing and software development under one roof. Choose one discipline or combine them. Either way, strategy, content and code move in the same direction.",
@@ -164,11 +164,13 @@ const en = {
     relatedEyebrow: "Related work",
     relatedTitle: "See the approach in practice.",
     otherServices: "Other services",
+    faqEyebrow: "Frequently asked questions",
+    faqTitle: "Questions we often hear.",
   },
   aboutPage: {
-    metaTitle: "About",
+    metaTitle: "About Us",
     metaDescription:
-      "Kechy Creative is a small, focused studio combining social media marketing and software development.",
+      "Kechy Creative is a two-person Istanbul studio combining social media marketing and software development, working remotely with brands worldwide.",
     teamEyebrow: "Who we are",
     teamTitle: "A marketer and a developer, working as one.",
     teamDescription:
@@ -209,7 +211,7 @@ const en = {
   },
   contactPage: {
     metaTitle: "Contact",
-    metaDescription: "Tell Kechy Creative about your project. Send us a message or write to us by email.",
+    metaDescription: "Start a project with Kechy Creative. Email kechycreative@gmail.com or send a message. We're based in Istanbul and work remotely worldwide.",
     eyebrow: "Contact",
     title: "Let's talk about your project.",
     lead: "Write to us about a new project, a collaboration or a quote. We'll read your message and get back to you through the most suitable channel.",
@@ -247,10 +249,10 @@ const tr: Dictionary = {
     ogLocale: "tr_TR",
     tagline: "Kreatif × Teknoloji Stüdyosu",
     description:
-      "Kechy Creative bir kreatif ve teknoloji stüdyosudur. Sosyal medya pazarlamasını ve yazılım geliştirmeyi bir araya getirerek markaların öne çıkmasını, işletmelerin ilerlemesini sağlıyoruz.",
-    homeTitle: "Kechy Creative — Markalar bizimle büyür",
+      "İstanbul merkezli kreatif ve teknoloji stüdyosu. Sosyal medya yönetimi, web sitesi, e-ticaret ve dijital reklam hizmetleriyle markaların büyümesine yardımcı oluyoruz.",
+    homeTitle: "Kechy Creative | Sosyal Medya ve Web Ajansı, İstanbul",
     homeDescription:
-      "Sosyal medya pazarlamasını ve web geliştirmeyi bir araya getiren kreatif ve teknoloji stüdyosu. Büyümek isteyen markalar için kampanyalar, web siteleri ve özel yazılımlar.",
+      "İstanbul merkezli kreatif ve teknoloji stüdyosu: sosyal medya yönetimi, kurumsal web sitesi, e-ticaret ve dijital reklam hizmetleriyle markanızı büyütüyoruz.",
   },
   common: {
     skipToContent: "İçeriğe geç",
@@ -348,9 +350,9 @@ const tr: Dictionary = {
     action: "Bize ulaşın",
   },
   workPage: {
-    metaTitle: "İşler",
+    metaTitle: "Çalışmalarımız",
     metaDescription:
-      "Kechy Creative'in marka kampanyalarına, e-ticaret deneyimlerine ve dijital platformlara yaklaşımını gösteren konsept projeler.",
+      "Sosyal medya lansman kampanyası, mobil öncelikli e-ticaret sitesi ve özel web platformu: brif aşamasından çıktılara kadar konsept çalışmalarımız.",
     eyebrow: "İşler",
     title: "Seçili işler",
     lead: "Kendi yazdığımız briflerle geliştirdiğimiz konsept çalışmalar: bir kampanya, bir mağaza ve bir platform. Müşteri projelerimizi yakında burada paylaşacağız.",
@@ -374,9 +376,9 @@ const tr: Dictionary = {
     ctaTitleB: "fikriniz mi var?",
   },
   servicesPage: {
-    metaTitle: "Hizmetler",
+    metaTitle: "Sosyal Medya, Web ve Reklam Hizmetleri",
     metaDescription:
-      "Sosyal medya ve kreatif, web geliştirme ve teknoloji, büyüme ve performans pazarlaması; hepsi tek bir odaklı ekipten.",
+      "Sosyal medya yönetimi, web sitesi ve e-ticaret geliştirme, dijital reklam yönetimi: strateji, içerik ve kod tek bir ekipte.",
     eyebrow: "Hizmetler",
     title: "Yaratıcı fikirler, sağlam mühendislik.",
     lead: "Sosyal medya pazarlaması ve yazılım geliştirme aynı çatı altında. İster tek bir alanda ister ikisini birlikte çalışalım; strateji, içerik ve kod her zaman aynı hedefe yönelir.",
@@ -406,11 +408,13 @@ const tr: Dictionary = {
     relatedEyebrow: "İlgili çalışma",
     relatedTitle: "Yaklaşımımızı uygulamada görün.",
     otherServices: "Diğer hizmetler",
+    faqEyebrow: "Sıkça sorulan sorular",
+    faqTitle: "Merak ettikleriniz.",
   },
   aboutPage: {
     metaTitle: "Hakkımızda",
     metaDescription:
-      "Kechy Creative, sosyal medya pazarlamasını ve yazılım geliştirmeyi bir araya getiren küçük ve odaklı bir stüdyodur.",
+      "Sosyal medya pazarlamasını ve yazılım geliştirmeyi bir araya getiren, İstanbul merkezli iki kişilik bir stüdyoyuz; dünya genelinde uzaktan çalışıyoruz.",
     teamEyebrow: "Biz kimiz",
     teamTitle: "Bir pazarlamacı ve bir yazılımcı, tek bir ekip.",
     teamDescription:
@@ -451,7 +455,7 @@ const tr: Dictionary = {
   },
   contactPage: {
     metaTitle: "İletişim",
-    metaDescription: "Projenizi Kechy Creative ile konuşun. Bize mesaj gönderin ya da e-postayla ulaşın.",
+    metaDescription: "Projeniz için Kechy Creative'e yazın: kechycreative@gmail.com. İstanbul merkezliyiz, dünya genelinde uzaktan çalışıyoruz.",
     eyebrow: "İletişim",
     title: "Projenizi konuşalım.",
     lead: "Yeni bir proje, iş birliği veya teklif için bize yazın. Mesajınızı okuyup size en uygun kanaldan dönüş yapacağız.",

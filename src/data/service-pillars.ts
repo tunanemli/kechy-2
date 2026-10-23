@@ -14,6 +14,8 @@ type PillarContent = {
     offerings: { title: string; body: string }[];
     connection: string;
     goodFit: string[];
+    /** Frequently asked questions, shown on the page and as FAQ structured data. */
+    faq: { question: string; answer: string }[];
   };
 };
 
@@ -41,9 +43,9 @@ const pillars: PillarDefinition[] = [
         summary: "Content and campaigns that give your brand a recognizable voice on the platforms your audience uses.",
         capabilities: ["Social media strategy", "Content planning", "Creative campaigns", "Short-form video concepts"],
         page: {
-          metaTitle: "Social Media & Creative",
+          metaTitle: "Social Media Management & Content",
           metaDescription:
-            "Social media strategy, content planning, creative campaigns and short-form video concepts from Kechy Creative.",
+            "Social media strategy, content planning, creative campaigns and Reels/TikTok video concepts that give your brand a clear, consistent voice.",
           headline: "Content people stop scrolling for.",
           lead: "We plan, create and run social media content and campaigns that give your brand a clear, consistent voice, and connect it to the rest of your digital presence.",
           offerings: [
@@ -72,6 +74,24 @@ const pillars: PillarDefinition[] = [
             "You need a consistent visual language across channels",
             "You want your content and website to tell the same story",
           ],
+          faq: [
+            {
+              question: "Which platforms do you work on?",
+              answer: "We focus on the platforms where your audience actually spends time. For most brands that means a few of Instagram, TikTok, LinkedIn and YouTube. Rather than being everywhere, we pick the ones that work for you.",
+            },
+            {
+              question: "Do you create the content yourselves?",
+              answer: "Strategy, content plans, copy and visual design come from us. For video, we prepare concepts, scripts and storyboards; when filming is needed, we plan it with you or the team you work with.",
+            },
+            {
+              question: "How soon will I see results?",
+              answer: "Lasting results on social media come from regular, consistent posting over a few months. At the end of the first month we review what is working and adjust the plan accordingly.",
+            },
+            {
+              question: "Do you also manage paid ads?",
+              answer: "Yes. Paid advertising is part of our Growth & Performance service. Planning content and ads together usually gives better results than handling them separately.",
+            },
+          ],
         },
       },
       tr: {
@@ -79,9 +99,9 @@ const pillars: PillarDefinition[] = [
         summary: "Markanıza, kitlenizin vakit geçirdiği platformlarda tanınan bir ses kazandıran içerikler ve kampanyalar.",
         capabilities: ["Sosyal medya stratejisi", "İçerik planlama", "Yaratıcı kampanyalar", "Kısa video konseptleri"],
         page: {
-          metaTitle: "Sosyal Medya ve Kreatif",
+          metaTitle: "Sosyal Medya Yönetimi ve İçerik Üretimi",
           metaDescription:
-            "Kechy Creative'den sosyal medya stratejisi, içerik planlama, yaratıcı kampanyalar ve kısa video konseptleri.",
+            "Sosyal medya stratejisi, içerik planlama, yaratıcı kampanyalar ve Reels/TikTok video konseptleri. Markanıza tutarlı ve tanınan bir ses kazandırıyoruz.",
           headline: "Kaydırmayı durduran içerikler.",
           lead: "Markanıza net ve tutarlı bir ses kazandıran sosyal medya içeriklerini ve kampanyalarını planlıyor, üretiyor ve yönetiyoruz. Hepsini dijital varlığınızın geri kalanıyla da uyumlu hale getiriyoruz.",
           offerings: [
@@ -110,6 +130,24 @@ const pillars: PillarDefinition[] = [
             "Tüm kanallarda tutarlı bir görsel dile ihtiyacınız varsa",
             "İçeriklerinizin ve web sitenizin aynı hikâyeyi anlatmasını istiyorsanız",
           ],
+          faq: [
+            {
+              question: "Hangi platformlarda çalışıyorsunuz?",
+              answer: "Hedef kitlenizin gerçekten vakit geçirdiği platformlara odaklanıyoruz. Çoğu marka için bu Instagram, TikTok, LinkedIn ve YouTube'dan birkaçı oluyor. Her yerde olmak yerine sizin için işe yarayanları seçiyoruz.",
+            },
+            {
+              question: "İçerikleri siz mi üretiyorsunuz?",
+              answer: "Strateji, içerik planı, metinler ve görsel tasarımlar bizden. Video için konsept, senaryo ve storyboard hazırlıyoruz; çekim gerektiğinde bunu sizinle ya da birlikte çalıştığınız ekiple planlıyoruz.",
+            },
+            {
+              question: "Ne zaman sonuç almaya başlarım?",
+              answer: "Sosyal medyada kalıcı sonuçlar, birkaç ay boyunca düzenli ve tutarlı paylaşımla oluşur. İlk ayın sonunda neyin işe yaradığını değerlendiriyor, planı buna göre güncelliyoruz.",
+            },
+            {
+              question: "Reklam yönetimini de yapıyor musunuz?",
+              answer: "Evet. Ücretli reklamlar Büyüme & Performans hizmetimizin bir parçası. İçeriği ve reklamı birlikte planlamak, genellikle ayrı ayrı yürütmekten daha iyi sonuç verir.",
+            },
+          ],
         },
       },
     },
@@ -131,9 +169,9 @@ const pillars: PillarDefinition[] = [
           "Custom software and integrations",
         ],
         page: {
-          metaTitle: "Web Development & Technology",
+          metaTitle: "Website, E-commerce & Software Development",
           metaDescription:
-            "Corporate websites, landing pages, e-commerce development and custom software and integrations from Kechy Creative.",
+            "Corporate websites, landing pages, e-commerce stores and custom software. Fast, mobile-first and built with search visibility in mind.",
           headline: "Websites and software that work as hard as you do.",
           lead: "From corporate websites to custom integrations, we build fast, accessible and maintainable digital products with modern technology.",
           offerings: [
@@ -162,6 +200,24 @@ const pillars: PillarDefinition[] = [
             "You want to start selling online, or sell better",
             "Manual work between your tools is slowing your team down",
           ],
+          faq: [
+            {
+              question: "How long does a website take?",
+              answer: "It depends on the scope. A corporate site with a handful of pages and a platform with custom integrations take very different amounts of time. After our first conversation we share a clear scope and timeline.",
+            },
+            {
+              question: "Can I update the website myself afterwards?",
+              answer: "Yes. Where it makes sense we set up a content management system so your team can edit content easily, and we show you how to use it.",
+            },
+            {
+              question: "Are your websites mobile-friendly and search-ready?",
+              answer: "Every site is designed for mobile first and delivered with fast loading, a clear page structure and the technical groundwork search engines need.",
+            },
+            {
+              question: "Can you integrate with the tools we already use?",
+              answer: "Yes. We can connect tools such as payment, CRM, accounting and email systems, and automate repetitive manual work between them.",
+            },
+          ],
         },
       },
       tr: {
@@ -174,9 +230,9 @@ const pillars: PillarDefinition[] = [
           "Özel yazılım ve entegrasyonlar",
         ],
         page: {
-          metaTitle: "Web Geliştirme ve Teknoloji",
+          metaTitle: "Web Sitesi, E-ticaret ve Yazılım Geliştirme",
           metaDescription:
-            "Kechy Creative'den kurumsal web siteleri, açılış sayfaları, e-ticaret geliştirme, özel yazılım ve entegrasyonlar.",
+            "Kurumsal web sitesi, açılış sayfası, e-ticaret sitesi ve özel yazılım geliştirme. Hızlı, mobil uyumlu ve arama motorlarına hazır dijital ürünler.",
           headline: "Sizin kadar çalışkan web siteleri ve yazılımlar.",
           lead: "Kurumsal web sitelerinden özel entegrasyonlara kadar, modern teknolojilerle hızlı, erişilebilir ve bakımı kolay dijital ürünler geliştiriyoruz.",
           offerings: [
@@ -205,6 +261,24 @@ const pillars: PillarDefinition[] = [
             "Online satışa başlamak ya da daha iyi satmak istiyorsanız",
             "Araçlarınız arasında elle yapılan işler ekibinizi yavaşlatıyorsa",
           ],
+          faq: [
+            {
+              question: "Bir web sitesi ne kadar sürede hazır olur?",
+              answer: "Kapsama göre değişir. Birkaç sayfalık bir kurumsal site ile özel entegrasyonlar içeren bir platform aynı sürede tamamlanmaz. İlk görüşmeden sonra net bir kapsam ve takvim paylaşıyoruz.",
+            },
+            {
+              question: "Siteyi sonradan kendim güncelleyebilir miyim?",
+              answer: "Evet. Gerektiğinde ekibinizin içerikleri kolayca düzenleyebileceği bir içerik yönetim sistemi kuruyor ve nasıl kullanılacağını gösteriyoruz.",
+            },
+            {
+              question: "Siteler mobil uyumlu ve arama motorlarına hazır mı?",
+              answer: "Her siteyi önce mobil ekran için tasarlıyor; hızlı açılan, net bir sayfa yapısına sahip ve arama motorlarının ihtiyaç duyduğu teknik altyapıyla teslim ediyoruz.",
+            },
+            {
+              question: "Kullandığımız sistemlerle entegrasyon yapabilir misiniz?",
+              answer: "Evet. Ödeme, CRM, muhasebe ve e-posta gibi araçları birbirine bağlayabilir, aralarında elle yapılan tekrar eden işleri otomatikleştirebiliriz.",
+            },
+          ],
         },
       },
     },
@@ -226,9 +300,9 @@ const pillars: PillarDefinition[] = [
           "Landing page optimization",
         ],
         page: {
-          metaTitle: "Growth & Performance Marketing",
+          metaTitle: "Digital Advertising & Performance Marketing",
           metaDescription:
-            "Digital advertising, conversion tracking, analytics and reporting, and landing page optimization from Kechy Creative.",
+            "Digital advertising, conversion tracking, analytics reporting and landing page optimization for growth you can measure.",
           headline: "Growth you can measure.",
           lead: "We plan and run digital advertising, set up tracking properly and turn the data into clear decisions about what to do next.",
           offerings: [
@@ -257,6 +331,24 @@ const pillars: PillarDefinition[] = [
             "Visitors arrive but don't take action",
             "You want reports your team actually reads",
           ],
+          faq: [
+            {
+              question: "Which ad platforms do you work with?",
+              answer: "We choose platforms based on where your audience is. For most projects that means Meta (Instagram and Facebook) and Google.",
+            },
+            {
+              question: "Is there a minimum ad budget?",
+              answer: "We don't set a fixed minimum. We agree on a budget together, based on your goals and the channels we want to test.",
+            },
+            {
+              question: "How do you report results?",
+              answer: "Our regular reports show spend, traffic and conversions such as form submissions and sales, and spell out what we will change in the next period.",
+            },
+            {
+              question: "Why does conversion tracking matter?",
+              answer: "Without knowing which ads actually bring customers, you cannot spend your budget well. Setting tracking up correctly from the start keeps money from being wasted.",
+            },
+          ],
         },
       },
       tr: {
@@ -269,9 +361,9 @@ const pillars: PillarDefinition[] = [
           "Açılış sayfası optimizasyonu",
         ],
         page: {
-          metaTitle: "Büyüme ve Performans Pazarlaması",
+          metaTitle: "Dijital Reklam ve Performans Pazarlaması",
           metaDescription:
-            "Kechy Creative'den dijital reklam yönetimi, dönüşüm takibi, analitik ve raporlama ile açılış sayfası optimizasyonu.",
+            "Dijital reklam yönetimi, dönüşüm takibi, analitik raporlama ve açılış sayfası optimizasyonu ile ölçülebilir büyüme.",
           headline: "Ölçülebilir büyüme.",
           lead: "Dijital reklamlarınızı planlayıp yönetiyor, ölçümlemeyi doğru kuruyor ve verileri bir sonraki adım için net kararlara dönüştürüyoruz.",
           offerings: [
@@ -299,6 +391,24 @@ const pillars: PillarDefinition[] = [
             "Ölçümlemeniz eksik ya da güvenilir değilse",
             "Ziyaretçiler geliyor ama harekete geçmiyorsa",
             "Ekibinizin gerçekten okuyacağı raporlar istiyorsanız",
+          ],
+          faq: [
+            {
+              question: "Hangi reklam platformlarında çalışıyorsunuz?",
+              answer: "Platformları kitlenizin bulunduğu yere göre seçiyoruz. Çoğu projede bu Meta (Instagram ve Facebook) ile Google oluyor.",
+            },
+            {
+              question: "Minimum bir reklam bütçesi gerekiyor mu?",
+              answer: "Sabit bir alt sınır koymuyoruz. Bütçeyi hedeflerinize ve test etmek istediğimiz kanallara göre birlikte belirliyoruz.",
+            },
+            {
+              question: "Sonuçları nasıl raporluyorsunuz?",
+              answer: "Düzenli raporlarımızda harcamayı, gelen ziyaretçiyi ve form gönderimi, satış gibi dönüşümleri gösteriyor; bir sonraki dönemde neyi değiştireceğimizi açıkça yazıyoruz.",
+            },
+            {
+              question: "Dönüşüm takibi neden önemli?",
+              answer: "Hangi reklamın gerçekten müşteri getirdiğini bilmeden bütçeyi doğru kullanmak mümkün değil. Takibi en baştan doğru kurmak, harcamanın boşa gitmesini önler.",
+            },
           ],
         },
       },

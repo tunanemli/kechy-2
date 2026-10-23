@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
     // Shared-element transitions between a project card and its case study (React <ViewTransition>).
     viewTransition: true,
+    // Inline the (small, Tailwind) CSS into the HTML to remove the render-blocking request.
+    inlineCss: true,
   },
   async redirects() {
     return [...localeRedirects(), ...legacyEnglishRedirects];

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { getDictionary } from "@/i18n/dictionaries";
 import { resolveLocale, type LangParams } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
-import { routes } from "@/lib/routes";
+import { liveHref, routes } from "@/lib/routes";
+import { breadcrumbs } from "@/lib/structured-data";
 
 const contactEmail = "kechycreative@gmail.com";
 
@@ -20,10 +22,11 @@ export async function generateMetadata({ params }: LangParams): Promise<Metadata
 
 export default async function ContactPage({ params }: LangParams) {
   const locale = await resolveLocale(params);
-  const { contactPage } = getDictionary(locale);
+  const { contactPage, common } = getDictionary(locale);
 
   return (
     <>
+      <JsonLd data={breadcrumbs(locale, [{ name: common.contact, path: liveHref(locale, routes.contact) }])} />
       <PageHero eyebrow={contactPage.eyebrow} title={contactPage.title} lead={contactPage.lead} />
 
       <section aria-labelledby="reach-title" className="py-20 lg:py-28">

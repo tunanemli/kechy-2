@@ -4,13 +4,15 @@ import { Approach } from "@/components/home/Approach";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Container } from "@/components/layout/Container";
 import { ArrowIcon } from "@/components/ui/Button";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getServicePillars } from "@/data/service-pillars";
 import { getDictionary } from "@/i18n/dictionaries";
 import { resolveLocale, type LangParams } from "@/i18n/server";
 import { pageMetadata } from "@/lib/metadata";
-import { routes } from "@/lib/routes";
+import { liveHref, routes } from "@/lib/routes";
+import { breadcrumbs } from "@/lib/structured-data";
 
 export async function generateMetadata({ params }: LangParams): Promise<Metadata> {
   const locale = await resolveLocale(params);
@@ -23,10 +25,11 @@ export async function generateMetadata({ params }: LangParams): Promise<Metadata
 
 export default async function ServicesPage({ params }: LangParams) {
   const locale = await resolveLocale(params);
-  const { servicesPage, servicesPreview } = getDictionary(locale);
+  const { servicesPage, servicesPreview, nav } = getDictionary(locale);
 
   return (
     <>
+      <JsonLd data={breadcrumbs(locale, [{ name: nav.services, path: liveHref(locale, routes.services) }])} />
       <PageHero eyebrow={servicesPage.eyebrow} title={servicesPage.title} lead={servicesPage.lead} />
 
       <section aria-labelledby="pillars-title">
