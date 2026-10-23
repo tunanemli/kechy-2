@@ -345,7 +345,7 @@ const tr: Dictionary = {
   },
   cta: {
     titleA: "Aklınızda bir",
-    titleB: "proje mi var?",
+    titleB: "fikir mi var?",
     body: "Ne üzerinde çalıştığınızı anlatın; nasıl hayata geçirebileceğimizi birlikte konuşalım.",
     action: "Bize ulaşın",
   },
