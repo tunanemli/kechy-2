@@ -101,9 +101,9 @@ const en = {
     more: "More about us",
   },
   cta: {
-    titleA: "Have a project",
-    titleB: "in mind?",
-    body: "Tell us what you're building. Let's explore how we can make it happen.",
+    titleA: "Have an",
+    titleB: "idea?",
+    body: "Tell us about your idea. Let's explore how we can make it happen.",
     action: "Start a conversation",
   },
   workPage: {
