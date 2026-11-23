@@ -8,7 +8,6 @@ import type { Locale } from "@/i18n/routing";
  */
 const serviceAreas = [
   { label: { tr: "İstanbul", en: "Istanbul" }, schema: [{ type: "City", name: "İstanbul" }] },
-  { label: { tr: "Ankara", en: "Ankara" }, schema: [{ type: "City", name: "Ankara" }] },
   {
     label: { tr: "Kocaeli (İzmit)", en: "Kocaeli (İzmit)" },
     schema: [
@@ -17,6 +16,7 @@ const serviceAreas = [
     ],
   },
   { label: { tr: "Sakarya", en: "Sakarya" }, schema: [{ type: "AdministrativeArea", name: "Sakarya" }] },
+  { label: { tr: "Ankara", en: "Ankara" }, schema: [{ type: "City", name: "Ankara" }] },
   { label: { tr: "Karabük", en: "Karabük" }, schema: [{ type: "City", name: "Karabük" }] },
 ] as const;
 

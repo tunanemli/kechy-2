@@ -5,10 +5,10 @@ const en = {
     ogLocale: "en_US",
     tagline: "Creative × Technology Studio",
     description:
-      "Creative studio serving Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük: social media, websites, e-commerce and digital advertising.",
-    homeTitle: "Kechy Creative | Social Media & Web Studio, Istanbul",
+      "Creative studio serving Istanbul, Kocaeli (İzmit), Sakarya, Ankara and Karabük: social media, websites, e-commerce and digital advertising.",
+    homeTitle: "Kechy Creative | Social Media & Web Studio, Istanbul–Kocaeli",
     homeDescription:
-      "Social media, corporate websites, e-commerce and digital advertising for brands in Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük.",
+      "Social media, corporate websites, e-commerce and digital advertising for brands in Istanbul, Kocaeli (İzmit), Sakarya, Ankara and Karabük.",
   },
   common: {
     skipToContent: "Skip to content",
@@ -44,7 +44,7 @@ const en = {
     eyebrowB: "Technology Studio",
     lines: ["We make", "brands"],
     highlight: "grow.",
-    lead: "We bring creative thinking and technology together to build brands that stand out and businesses that move forward.",
+    lead: "We bring creative thinking and technology together to help brands in Istanbul and Kocaeli stand out and their businesses move forward.",
     primary: "Let's build something",
     secondary: "Explore our work",
     visual: {
@@ -216,7 +216,7 @@ const en = {
   },
   contactPage: {
     metaTitle: "Contact",
-    metaDescription: "Email kechycreative@gmail.com to start a project. We serve Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük, and work remotely.",
+    metaDescription: "Email kechycreative@gmail.com to start a project. We serve Istanbul, Kocaeli (İzmit), Sakarya, Ankara and Karabük, and work remotely.",
     eyebrow: "Contact",
     title: "Let's talk about your project.",
     lead: "Write to us about a new project, a collaboration or a quote. We'll read your message and get back to you through the most suitable channel.",
@@ -256,10 +256,10 @@ const tr: Dictionary = {
     ogLocale: "tr_TR",
     tagline: "Kreatif × Teknoloji Stüdyosu",
     description:
-      "İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'teki markalara sosyal medya, web sitesi, e-ticaret ve dijital reklam hizmeti veren kreatif stüdyo.",
-    homeTitle: "Kechy Creative | Sosyal Medya ve Web Ajansı, İstanbul",
+      "İstanbul, Kocaeli (İzmit), Sakarya, Ankara ve Karabük'teki markalara sosyal medya, web sitesi, e-ticaret ve dijital reklam hizmeti veren kreatif stüdyo.",
+    homeTitle: "Kechy Creative | Sosyal Medya & Web Ajansı, İstanbul–Kocaeli",
     homeDescription:
-      "İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'te sosyal medya yönetimi, kurumsal web sitesi, e-ticaret ve dijital reklam hizmetleri.",
+      "İstanbul, Kocaeli (İzmit), Sakarya, Ankara ve Karabük'te sosyal medya yönetimi, kurumsal web sitesi, e-ticaret ve dijital reklam hizmetleri.",
   },
   common: {
     skipToContent: "İçeriğe geç",
@@ -295,7 +295,7 @@ const tr: Dictionary = {
     eyebrowB: "Teknoloji Stüdyosu",
     lines: ["Markalar", "bizimle"],
     highlight: "büyür.",
-    lead: "Yaratıcı fikirleri teknolojiyle buluşturuyor, markaların fark edilmesini ve işletmelerin ilerlemesini sağlıyoruz.",
+    lead: "Yaratıcı fikirleri teknolojiyle buluşturuyor; İstanbul ve Kocaeli'deki markaların fark edilmesini ve işletmelerin ilerlemesini sağlıyoruz.",
     primary: "Projenizi konuşalım",
     secondary: "İşlerimizi inceleyin",
     visual: {
@@ -467,7 +467,7 @@ const tr: Dictionary = {
   },
   contactPage: {
     metaTitle: "İletişim",
-    metaDescription: "Projeniz için kechycreative@gmail.com adresine yazın. İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'e, uzaktan her yere hizmet veriyoruz.",
+    metaDescription: "Projeniz için kechycreative@gmail.com adresine yazın. İstanbul, Kocaeli (İzmit), Sakarya, Ankara ve Karabük'e, uzaktan her yere hizmet veriyoruz.",
     eyebrow: "İletişim",
     title: "Projenizi konuşalım.",
     lead: "Yeni bir proje, iş birliği veya teklif için bize yazın. Mesajınızı okuyup size en uygun kanaldan dönüş yapacağız.",
