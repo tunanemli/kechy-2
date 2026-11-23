@@ -123,6 +123,7 @@ const en = {
   },
   caseStudy: {
     typeLabel: "Project type",
+    photoCredit: "Photo",
     typeConcept: "Concept work, our own brief",
     disciplinesLabel: "Disciplines",
     brief: "The brief",
@@ -374,6 +375,7 @@ const tr: Dictionary = {
   },
   caseStudy: {
     typeLabel: "Proje türü",
+    photoCredit: "Fotoğraf",
     typeConcept: "Konsept çalışma, kendi brifimiz",
     disciplinesLabel: "Disiplinler",
     brief: "Brif",
