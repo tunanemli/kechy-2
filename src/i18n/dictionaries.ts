@@ -5,10 +5,10 @@ const en = {
     ogLocale: "en_US",
     tagline: "Creative × Technology Studio",
     description:
-      "Creative studio serving Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük: social media, websites, e-commerce and digital advertising.",
-    homeTitle: "Kechy Creative | Social Media & Web Studio, Istanbul",
+      "Kocaeli-based creative studio serving Kocaeli, Istanbul, Sakarya, Ankara and Karabük: social media, websites, e-commerce and digital advertising.",
+    homeTitle: "Kechy Creative | Social Media & Web Studio, Kocaeli–Istanbul",
     homeDescription:
-      "Social media, corporate websites, e-commerce and digital advertising for brands in Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük.",
+      "Social media, corporate websites, e-commerce and digital advertising for brands in Kocaeli (İzmit), Istanbul, Sakarya, Ankara and Karabük.",
   },
   common: {
     skipToContent: "Skip to content",
@@ -44,7 +44,7 @@ const en = {
     eyebrowB: "Technology Studio",
     lines: ["We make", "brands"],
     highlight: "grow.",
-    lead: "We bring creative thinking and technology together to build brands that stand out and businesses that move forward.",
+    lead: "We bring creative thinking and technology together to help brands in Kocaeli and Istanbul stand out and their businesses move forward.",
     primary: "Let's build something",
     secondary: "Explore our work",
     visual: {
@@ -170,12 +170,12 @@ const en = {
     faqTitle: "Questions we often hear.",
     areasQuestion: "Which cities do you serve?",
     areasAnswer: (areas: string) =>
-      `We're based in Istanbul and work with businesses in ${areas}. We also work remotely with brands in other cities and abroad.`,
+      `We're based in Kocaeli and work with businesses in ${areas}. We also work remotely with brands in other cities and abroad.`,
   },
   aboutPage: {
     metaTitle: "About Us",
     metaDescription:
-      "Kechy Creative is a two-person Istanbul studio combining social media marketing and software development, working remotely with brands worldwide.",
+      "Kechy Creative is a two-person studio in Kocaeli combining social media marketing and software development, working remotely with brands worldwide.",
     teamEyebrow: "Who we are",
     teamTitle: "A marketer and a developer, working as one.",
     teamDescription:
@@ -216,14 +216,14 @@ const en = {
   },
   contactPage: {
     metaTitle: "Contact",
-    metaDescription: "Email kechycreative@gmail.com to start a project. We serve Istanbul, Ankara, Kocaeli (İzmit), Sakarya and Karabük, and work remotely.",
+    metaDescription: "Email kechycreative@gmail.com to start a project. We serve Kocaeli (İzmit), Istanbul, Sakarya, Ankara and Karabük, and work remotely.",
     eyebrow: "Contact",
     title: "Let's talk about your project.",
     lead: "Write to us about a new project, a collaboration or a quote. We'll read your message and get back to you through the most suitable channel.",
     reachTitle: "Get in touch",
     reachBody: "We work flexibly, both in person and remotely. Email is the best way to reach us.",
     addressLabel: "Location",
-    address: "Istanbul",
+    address: "Kocaeli",
     areasLabel: "Service areas",
     areasRemote: "We also work remotely with clients anywhere.",
     emailLabel: "Email",
@@ -256,10 +256,10 @@ const tr: Dictionary = {
     ogLocale: "tr_TR",
     tagline: "Kreatif × Teknoloji Stüdyosu",
     description:
-      "İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'teki markalara sosyal medya, web sitesi, e-ticaret ve dijital reklam hizmeti veren kreatif stüdyo.",
-    homeTitle: "Kechy Creative | Sosyal Medya ve Web Ajansı, İstanbul",
+      "Kocaeli merkezli kreatif stüdyo. Kocaeli (İzmit), İstanbul, Sakarya, Ankara ve Karabük'teki markalara sosyal medya, web sitesi, e-ticaret ve reklam hizmeti.",
+    homeTitle: "Kechy Creative | Sosyal Medya & Web Ajansı, Kocaeli–İstanbul",
     homeDescription:
-      "İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'te sosyal medya yönetimi, kurumsal web sitesi, e-ticaret ve dijital reklam hizmetleri.",
+      "Kocaeli (İzmit), İstanbul, Sakarya, Ankara ve Karabük'te sosyal medya yönetimi, kurumsal web sitesi, e-ticaret ve dijital reklam hizmetleri.",
   },
   common: {
     skipToContent: "İçeriğe geç",
@@ -295,7 +295,7 @@ const tr: Dictionary = {
     eyebrowB: "Teknoloji Stüdyosu",
     lines: ["Markalar", "bizimle"],
     highlight: "büyür.",
-    lead: "Yaratıcı fikirleri teknolojiyle buluşturuyor, markaların fark edilmesini ve işletmelerin ilerlemesini sağlıyoruz.",
+    lead: "Yaratıcı fikirleri teknolojiyle buluşturuyor; Kocaeli ve İstanbul'daki markaların fark edilmesini ve işletmelerin ilerlemesini sağlıyoruz.",
     primary: "Projenizi konuşalım",
     secondary: "İşlerimizi inceleyin",
     visual: {
@@ -421,12 +421,12 @@ const tr: Dictionary = {
     faqTitle: "Merak ettikleriniz.",
     areasQuestion: "Hangi şehirlerde hizmet veriyorsunuz?",
     areasAnswer: (areas: string) =>
-      `İstanbul merkezliyiz ve şu şehirlerdeki işletmelerle çalışıyoruz: ${areas}. Uzaktan çalışarak diğer şehirlerdeki ve yurt dışındaki markalara da hizmet veriyoruz.`,
+      `Kocaeli merkezliyiz ve şu şehirlerdeki işletmelerle çalışıyoruz: ${areas}. Uzaktan çalışarak diğer şehirlerdeki ve yurt dışındaki markalara da hizmet veriyoruz.`,
   },
   aboutPage: {
     metaTitle: "Hakkımızda",
     metaDescription:
-      "Sosyal medya pazarlamasını ve yazılım geliştirmeyi bir araya getiren, İstanbul merkezli iki kişilik bir stüdyoyuz; dünya genelinde uzaktan çalışıyoruz.",
+      "Sosyal medya pazarlamasını ve yazılım geliştirmeyi bir araya getiren, Kocaeli merkezli iki kişilik bir stüdyoyuz; dünya genelinde uzaktan çalışıyoruz.",
     teamEyebrow: "Biz kimiz",
     teamTitle: "Bir pazarlamacı ve bir yazılımcı, tek bir ekip.",
     teamDescription:
@@ -467,14 +467,14 @@ const tr: Dictionary = {
   },
   contactPage: {
     metaTitle: "İletişim",
-    metaDescription: "Projeniz için kechycreative@gmail.com adresine yazın. İstanbul, Ankara, Kocaeli (İzmit), Sakarya ve Karabük'e, uzaktan her yere hizmet veriyoruz.",
+    metaDescription: "Projeniz için kechycreative@gmail.com adresine yazın. Kocaeli (İzmit), İstanbul, Sakarya, Ankara ve Karabük'e, uzaktan her yere hizmet veriyoruz.",
     eyebrow: "İletişim",
     title: "Projenizi konuşalım.",
     lead: "Yeni bir proje, iş birliği veya teklif için bize yazın. Mesajınızı okuyup size en uygun kanaldan dönüş yapacağız.",
     reachTitle: "Bize ulaşın",
     reachBody: "Hem yüz yüze hem de uzaktan esnek bir şekilde çalışıyoruz. Bize ulaşmanın en kolay yolu e-posta.",
     addressLabel: "Konum",
-    address: "İstanbul",
+    address: "Kocaeli",
     areasLabel: "Hizmet bölgeleri",
     areasRemote: "Uzaktan çalışarak her yerdeki markalara da hizmet veriyoruz.",
     emailLabel: "E-posta",
