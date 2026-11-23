@@ -3,6 +3,15 @@ import { caseStudyHref } from "@/lib/routes";
 
 export type ProjectVisualVariant = "campaign" | "commerce" | "platform";
 
+/** A licensed photo: alt text, crop focus point and photographer credit. */
+type ProjectImage<Alt> = {
+  src: string;
+  alt: Alt;
+  /** CSS object-position used when the photo is cropped to the card's ratio. */
+  position?: string;
+  credit: { name: string; profileUrl: string; photoUrl: string };
+};
+
 type ProjectContent = {
   title: string;
   category: string;
@@ -22,7 +31,7 @@ type ProjectDefinition = {
   /** Conceptual work is always labeled as such and never presented as client work. */
   kind: "concept" | "client";
   /** Real project imagery (in /public). Concepts without imagery use a CSS visual. */
-  image?: { src: string; alt: Record<Locale, string> };
+  image?: ProjectImage<Record<Locale, string>>;
   visual: ProjectVisualVariant;
   /** Ids of the service pillars involved (see service-pillars.ts). */
   services: string[];
@@ -30,11 +39,21 @@ type ProjectDefinition = {
 };
 
 export type Project = Omit<ProjectDefinition, "content" | "image"> &
-  ProjectContent & { href: string; image?: { src: string; alt: string } };
+  ProjectContent & { href: string; image?: ProjectImage<string> };
 
 const projects: ProjectDefinition[] = [
   {
     slug: "brand-campaign-concept",
+    image: {
+      src: "/images/projects/brand-campaign-concept.webp",
+      alt: { en: "A model in a beige jacket and sunglasses against a blue sky", tr: "Mavi gökyüzü önünde bej ceketli ve güneş gözlüklü bir model" },
+      position: "center",
+      credit: {
+        name: "mojtaba mosayebzadeh",
+        profileUrl: "https://unsplash.com/@mojiw?utm_source=kechy_creative&utm_medium=referral",
+        photoUrl: "https://unsplash.com/photos/a-woman-with-white-hair-wearing-a-tan-jacket-and-sunglasses-nTLcbrCUVBQ?utm_source=kechy_creative&utm_medium=referral",
+      },
+    },
     kind: "concept",
     visual: "campaign",
     services: ["creative-social", "growth-performance"],
@@ -127,6 +146,16 @@ const projects: ProjectDefinition[] = [
   },
   {
     slug: "e-commerce-experience-concept",
+    image: {
+      src: "/images/projects/e-commerce-experience-concept.webp",
+      alt: { en: "An unlabeled amber glass dropper bottle on a stone pedestal", tr: "Taş bir kaide üzerinde etiketsiz amber cam damlalıklı şişe" },
+      position: "center",
+      credit: {
+        name: "Avtar Singh",
+        profileUrl: "https://unsplash.com/@avtar9w?utm_source=kechy_creative&utm_medium=referral",
+        photoUrl: "https://unsplash.com/photos/amber-glass-dropper-bottle-with-blank-label-on-concrete-block-MkuwnDkT1s0?utm_source=kechy_creative&utm_medium=referral",
+      },
+    },
     kind: "concept",
     visual: "commerce",
     services: ["web-technology", "growth-performance"],
@@ -223,6 +252,16 @@ const projects: ProjectDefinition[] = [
   },
   {
     slug: "digital-platform-concept",
+    image: {
+      src: "/images/projects/digital-platform-concept.webp",
+      alt: { en: "A person reviewing business charts on a laptop", tr: "Dizüstü bilgisayarda iş grafiklerini inceleyen bir kişi" },
+      position: "50% 45%",
+      credit: {
+        name: "Loui Kiær",
+        profileUrl: "https://unsplash.com/@plutonicmedia?utm_source=kechy_creative&utm_medium=referral",
+        photoUrl: "https://unsplash.com/photos/person-analyzing-business-charts-on-laptop-CielzQJR0SQ?utm_source=kechy_creative&utm_medium=referral",
+      },
+    },
     kind: "concept",
     visual: "platform",
     services: ["web-technology", "growth-performance"],
@@ -331,7 +370,7 @@ function localize(project: ProjectDefinition, locale: Locale): Project {
     ...base,
     ...content[locale],
     href: caseStudyHref(locale, project.slug),
-    image: image ? { src: image.src, alt: image.alt[locale] } : undefined,
+    image: image ? { ...image, alt: image.alt[locale] } : undefined,
   };
 }
 

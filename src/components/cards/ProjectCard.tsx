@@ -37,6 +37,7 @@ export function ProjectCard({ project, labels, featured = false, aspectClassName
                 fill
                 sizes={featured ? "(min-width: 1024px) 58vw, 100vw" : "(min-width: 1024px) 38vw, 100vw"}
                 className="object-cover"
+                style={{ objectPosition: project.image.position }}
               />
             ) : (
               <ProjectVisual variant={project.visual} label={project.visualLabel} copy={project.visualCopy} />

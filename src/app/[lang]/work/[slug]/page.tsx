@@ -94,12 +94,25 @@ export default async function CaseStudyPage({ params }: Props) {
                 preload
                 sizes="(min-width: 1320px) 1224px, 100vw"
                 className="object-cover"
+                style={{ objectPosition: project.image.position }}
               />
             ) : (
               <ProjectVisual variant={project.visual} label={project.visualLabel} copy={project.visualCopy} />
             )}
           </div>
         </ViewTransition>
+        {project.image ? (
+          <p className="mt-3 text-xs text-subtle">
+            {caseStudy.photoCredit}:{" "}
+            <a href={project.image.credit.profileUrl} className="underline-offset-2 hover:text-foreground hover:underline">
+              {project.image.credit.name}
+            </a>{" "}
+            /{" "}
+            <a href={project.image.credit.photoUrl} className="underline-offset-2 hover:text-foreground hover:underline">
+              Unsplash
+            </a>
+          </p>
+        ) : null}
       </Container>
 
       <CaseSection id="brief" label={caseStudy.brief}>
