@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
+import { formatServiceAreas } from "@/data/service-areas";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
@@ -40,6 +41,11 @@ export default async function ContactPage({ params }: LangParams) {
               <div className="border-b border-line py-5">
                 <dt className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">{contactPage.addressLabel}</dt>
                 <dd className="mt-2 text-foreground">{contactPage.address}</dd>
+              </div>
+              <div className="border-b border-line py-5">
+                <dt className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">{contactPage.areasLabel}</dt>
+                <dd className="mt-2 text-foreground">{formatServiceAreas(locale)}</dd>
+                <dd className="mt-1 text-sm text-muted">{contactPage.areasRemote}</dd>
               </div>
               <div className="border-b border-line py-5">
                 <dt className="text-xs font-medium tracking-[0.22em] text-subtle uppercase">{contactPage.emailLabel}</dt>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Logo } from "@/components/layout/Logo";
 import { getMainNav } from "@/components/layout/navigation";
+import { serviceAreaLabels } from "@/data/service-areas";
 import { getServicePillars } from "@/data/service-pillars";
 import { getDictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/routing";
@@ -41,6 +42,12 @@ export function Footer({ locale }: { locale: Locale }) {
             <Logo width={150} alt="" />
           </Link>
           <p className="mt-8 max-w-sm text-base leading-relaxed text-muted">{footer.statement}</p>
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted">
+            <span className="mb-1.5 block text-xs font-medium tracking-[0.22em] text-subtle uppercase">
+              {footer.areasLabel}
+            </span>
+            {[...serviceAreaLabels(locale), footer.areasRemote].join(" · ")}
+          </p>
         </div>
 
         {columns.map((column) => (

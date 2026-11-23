@@ -1,4 +1,5 @@
 import type { Project } from "@/data/projects";
+import { areaServedSchema } from "@/data/service-areas";
 import type { ServicePillar } from "@/data/service-pillars";
 import { getDictionary } from "@/i18n/dictionaries";
 import { localizePath, type Locale } from "@/i18n/routing";
@@ -32,6 +33,7 @@ export function siteGraph(locale: Locale): JsonLdNode {
         description: meta.description,
         email: contactEmail,
         address: { "@type": "PostalAddress", addressLocality: "İstanbul", addressCountry: "TR" },
+        areaServed: areaServedSchema(),
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "customer service",
@@ -77,6 +79,7 @@ export function serviceSchema(locale: Locale, pillar: ServicePillar): JsonLdNode
     url: absolute(pillar.href),
     inLanguage: locale,
     provider: { "@id": organizationId() },
+    areaServed: areaServedSchema(),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: pillar.title,
