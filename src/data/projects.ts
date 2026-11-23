@@ -9,8 +9,8 @@ type ProjectContent = {
   summary: string;
   /** Accessible description of the visual. */
   visualLabel: string;
-  /** Text shown inside the visual, where the visual has any. */
-  visualText?: string;
+  /** Words shown inside the illustrated mockups (fictional concept brand, UI labels). */
+  visualCopy: Record<string, string>;
   brief: string;
   approach: { title: string; body: string }[];
   deliverables: string[];
@@ -44,8 +44,15 @@ const projects: ProjectDefinition[] = [
         category: "Creative & Social",
         summary:
           "A social-first launch campaign: one core idea carried through a key visual system, a content calendar and short-form video concepts.",
-        visualLabel: "Illustration of a campaign system: a key visual and a series of social post formats.",
-        visualText: "New season.",
+        visualLabel:
+          "Concept visual for the fictional fashion brand MORA: a campaign poster and two phones showing a story and a social feed.",
+        visualCopy: {
+          brand: "MORA",
+          season: "SS26 Collection",
+          headline: "New season.",
+          cta: "Discover",
+          chip: "Reels · 0:15",
+        },
         brief:
           "A brand introducing a new seasonal collection needs a launch that feels like one campaign, not a set of unrelated posts. The campaign has to work across feed posts, stories and short-form video, and lead people to a page where they can act.",
         approach: [
@@ -79,8 +86,15 @@ const projects: ProjectDefinition[] = [
         category: "Kreatif & Sosyal Medya",
         summary:
           "Tek bir fikirden yola çıkan, sosyal medya odaklı bir lansman: ana görsel, içerik takvimi ve kısa videolar.",
-        visualLabel: "Kampanya sistemi illüstrasyonu: bir ana görsel ve bir dizi sosyal medya gönderisi formatı.",
-        visualText: "Yeni sezon.",
+        visualLabel:
+          "Kurgusal moda markası MORA için konsept görsel: bir kampanya afişi ve hikâye ile sosyal medya akışı gösteren iki telefon.",
+        visualCopy: {
+          brand: "MORA",
+          season: "SS26 Koleksiyonu",
+          headline: "Yeni sezon.",
+          cta: "Keşfet",
+          chip: "Reels · 0:15",
+        },
         brief:
           "Yeni sezon koleksiyonunu tanıtan bir marka, birbirinden kopuk gönderiler yerine tek bir kampanya gibi hissettiren bir lansman istiyor. Kampanyanın akış gönderilerinde, hikâyelerde ve kısa videolarda aynı etkiyi yaratması ve insanları harekete geçebilecekleri bir sayfaya yönlendirmesi gerekiyor.",
         approach: [
@@ -122,7 +136,17 @@ const projects: ProjectDefinition[] = [
         category: "Web & Technology",
         summary:
           "A storefront designed around fast product discovery, clear product pages and a shorter route to checkout.",
-        visualLabel: "Illustration of an online store: a product grid next to a product detail panel.",
+        visualLabel:
+          "Concept visual for the fictional skincare brand LUME: two phones showing a product list and a product page.",
+        visualCopy: {
+          brand: "LUME",
+          nav: "New in",
+          product: "Hydrating serum",
+          price: "₺640",
+          cta: "Add to cart",
+          chip: "Checkout · 2 steps",
+          chip2: "Fast delivery",
+        },
         brief:
           "A growing product brand sells mostly through social media messages and wants an online store of its own. Customers should find products quickly on mobile, understand them without asking questions, and check out in as few steps as possible.",
         approach: [
@@ -156,7 +180,17 @@ const projects: ProjectDefinition[] = [
         category: "Web & Teknoloji",
         summary:
           "Hızlı ürün keşfi, anlaşılır ürün sayfaları ve daha kısa bir ödeme süreci üzerine kurulu bir online mağaza.",
-        visualLabel: "Online mağaza illüstrasyonu: bir ürün listesi ve yanında ürün detay paneli.",
+        visualLabel:
+          "Kurgusal cilt bakım markası LUME için konsept görsel: ürün listesi ve ürün sayfası gösteren iki telefon.",
+        visualCopy: {
+          brand: "LUME",
+          nav: "Yeni gelenler",
+          product: "Nemlendirici serum",
+          price: "₺640",
+          cta: "Sepete ekle",
+          chip: "Ödeme · 2 adım",
+          chip2: "Hızlı teslimat",
+        },
         brief:
           "Ürünlerini çoğunlukla sosyal medya mesajları üzerinden satan, büyümekte olan bir marka kendi online mağazasını kurmak istiyor. Müşterilerin ürünleri mobilde hızla bulabilmesi, soru sormadan anlayabilmesi ve ödemeyi olabildiğince az adımda tamamlayabilmesi gerekiyor.",
         approach: [
@@ -198,7 +232,20 @@ const projects: ProjectDefinition[] = [
         category: "Web & Technology · Growth",
         summary:
           "A custom web platform connected to existing tools through integrations, with a reporting view built in from day one.",
-        visualLabel: "Illustration of a web platform dashboard with navigation, a chart and connected tools.",
+        visualLabel:
+          "Concept visual for the fictional platform Atlas: a dashboard with a daily schedule, a weekly chart and connected tools.",
+        visualCopy: {
+          brand: "Atlas",
+          today: "Today",
+          kpi1: "Bookings",
+          kpi2: "New clients",
+          kpi3: "Open invoices",
+          schedule: "Schedule",
+          chart: "This week",
+          int1: "Calendar",
+          int2: "Invoicing",
+          int3: "CRM",
+        },
         brief:
           "A service business manages bookings, customer records and invoices in separate tools, copying data between them by hand. It needs one place to run day-to-day operations and a clear view of how the business is performing.",
         approach: [
@@ -232,7 +279,20 @@ const projects: ProjectDefinition[] = [
         category: "Web & Teknoloji · Büyüme",
         summary:
           "Mevcut araçlara entegrasyonlarla bağlanan ve ilk günden bir raporlama ekranı içeren özel bir web platformu.",
-        visualLabel: "Web platformu paneli illüstrasyonu: menü, grafik ve birbirine bağlı araçlar.",
+        visualLabel:
+          "Kurgusal platform Atlas için konsept görsel: günlük program, haftalık grafik ve bağlı araçlar içeren bir panel.",
+        visualCopy: {
+          brand: "Atlas",
+          today: "Bugün",
+          kpi1: "Randevu",
+          kpi2: "Yeni müşteri",
+          kpi3: "Bekleyen fatura",
+          schedule: "Program",
+          chart: "Bu hafta",
+          int1: "Takvim",
+          int2: "Fatura",
+          int3: "CRM",
+        },
         brief:
           "Bir hizmet işletmesi randevuları, müşteri kayıtlarını ve faturaları ayrı araçlarda yönetiyor ve verileri bunlar arasında elle taşıyor. Günlük operasyonu tek bir yerden yürütebileceği ve işlerin nasıl gittiğini net görebileceği bir sisteme ihtiyacı var.",
         approach: [

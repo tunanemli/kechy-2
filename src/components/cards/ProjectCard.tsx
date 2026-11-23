@@ -39,7 +39,7 @@ export function ProjectCard({ project, labels, featured = false, aspectClassName
                 className="object-cover"
               />
             ) : (
-              <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
+              <ProjectVisual variant={project.visual} label={project.visualLabel} copy={project.visualCopy} />
             )}
           </div>
         </div>

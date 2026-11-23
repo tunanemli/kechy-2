@@ -96,7 +96,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 className="object-cover"
               />
             ) : (
-              <ProjectVisual variant={project.visual} label={project.visualLabel} text={project.visualText} />
+              <ProjectVisual variant={project.visual} label={project.visualLabel} copy={project.visualCopy} />
             )}
           </div>
         </ViewTransition>
