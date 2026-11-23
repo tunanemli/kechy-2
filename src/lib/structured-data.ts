@@ -32,7 +32,7 @@ export function siteGraph(locale: Locale): JsonLdNode {
         logo: absolute("/brand/kechy-logo-orange.png"),
         description: meta.description,
         email: contactEmail,
-        address: { "@type": "PostalAddress", addressLocality: "İstanbul", addressCountry: "TR" },
+        address: { "@type": "PostalAddress", addressRegion: "Kocaeli", addressCountry: "TR" },
         areaServed: areaServedSchema(),
         contactPoint: {
           "@type": "ContactPoint",

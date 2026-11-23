@@ -7,7 +7,6 @@ import type { Locale } from "@/i18n/routing";
  * i18n/dictionaries.ts name the regions in prose and need a manual update.
  */
 const serviceAreas = [
-  { label: { tr: "İstanbul", en: "Istanbul" }, schema: [{ type: "City", name: "İstanbul" }] },
   {
     label: { tr: "Kocaeli (İzmit)", en: "Kocaeli (İzmit)" },
     schema: [
@@ -15,6 +14,7 @@ const serviceAreas = [
       { type: "City", name: "İzmit" },
     ],
   },
+  { label: { tr: "İstanbul", en: "Istanbul" }, schema: [{ type: "City", name: "İstanbul" }] },
   { label: { tr: "Sakarya", en: "Sakarya" }, schema: [{ type: "AdministrativeArea", name: "Sakarya" }] },
   { label: { tr: "Ankara", en: "Ankara" }, schema: [{ type: "City", name: "Ankara" }] },
   { label: { tr: "Karabük", en: "Karabük" }, schema: [{ type: "City", name: "Karabük" }] },
@@ -24,7 +24,7 @@ export function serviceAreaLabels(locale: Locale): string[] {
   return serviceAreas.map((area) => area.label[locale]);
 }
 
-/** "İstanbul, Kocaeli (İzmit) ve Sakarya" / "Istanbul, Kocaeli (İzmit) and Sakarya". */
+/** "Kocaeli (İzmit), İstanbul ve Sakarya" / "Kocaeli (İzmit), Istanbul, and Sakarya". */
 export function formatServiceAreas(locale: Locale): string {
   return new Intl.ListFormat(locale, { type: "conjunction" }).format(serviceAreaLabels(locale));
 }
